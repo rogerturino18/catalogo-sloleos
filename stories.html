@@ -56,11 +56,18 @@ h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1;text-wrap:balance}
 
 /* máquina */
 .maq .fundo{position:absolute;inset:-40px;background-size:cover;background-position:center;filter:blur(38px) saturate(.5);opacity:.22}
-.maq.cena .inner{justify-content:flex-end}
+.maq.cena .inner{justify-content:flex-start}
+.abertura .video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.abertura .sombra{position:absolute;inset:0;background:linear-gradient(180deg,rgba(33,32,32,.35) 0%,rgba(33,32,32,.1) 30%,rgba(33,32,32,.6) 58%,rgba(33,32,32,.96) 85%)}
+.abertura .bg::after{display:none}
+.cena .bg.desfoque{inset:-40px;filter:blur(28px) brightness(.45) saturate(.8)}
+.cena .bg.desfoque::after{display:none}
+.maq .inteira{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;margin:10px 0 4px}
+.maq .inteira img{max-width:100%;max-height:100%;object-fit:contain;border-radius:10px;box-shadow:0 18px 40px rgba(0,0,0,.45)}
 .maq .chapa{flex:1;min-height:0;background:#fff;border-radius:16px;position:relative;display:flex;align-items:center;justify-content:center;box-shadow:0 20px 50px rgba(0,0,0,.4);margin-bottom:6px}
 .maq .chapa img{max-width:100%;max-height:100%;object-fit:contain;padding:18px}
 .maq .chapa .plaqueta{position:absolute;left:12px;top:12px}
-.maq .topo-cena{margin-bottom:auto;display:flex;justify-content:space-between;align-items:center}
+.maq .topo-cena{display:flex;justify-content:space-between;align-items:center}
 .maq .topo-cena img{width:120px}
 .novo{font:800 10.5px/1 var(--f-body);letter-spacing:.12em;background:var(--amarelo);color:var(--grafite);padding:7px 10px;border-radius:99px}
 .maq .eyebrow{margin:14px 0 8px}
@@ -142,7 +149,9 @@ h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1;text-wrap:balance}
 <script>
 const feed = document.getElementById("feed");
 const frase1 = d => d.split(/(?<=\.)\s/)[0];
-let h = `<section class="slide abertura cena"><div class="bg" style="background-image:url('${foto("obra-noturna")}')"></div><div class="frame"></div><div class="inner">
+let h = `<section class="slide abertura cena"><div class="bg" style="background-image:url('${foto("obra-noturna")}')"></div>
+  <video class="video" autoplay muted loop playsinline preload="auto" poster="${foto("obra-noturna")}" aria-hidden="true"><source src="${VIDEO_FABRICA}" type="video/mp4"></video>
+  <div class="sombra"></div><div class="frame"></div><div class="inner">
   <img class="logo" src="${LOGO_BRANCO}" alt="SL Óleos">
   <h1>Do grão ao óleo</h1>
   <p>Máquinas, plantas e peças para extração e refino de óleos vegetais.</p>
@@ -160,8 +169,9 @@ h += `<section class="slide empresa"><div class="inner">
 PRODUTOS.forEach(p => {
   const acoes = `<div class="acoes"><button class="btn-ficha" data-ficha="${p.id}">Ficha técnica</button><button class="btn-orc" data-orc="${p.id}"><span class="lbl">+ Orçamento</span></button></div>`;
   h += p.cena
-    ? `<section class="slide maq cena"><div class="bg" style="background-image:url('${p.img}')"></div><div class="frame"></div><div class="inner">
+    ? `<section class="slide maq cena"><div class="bg desfoque" style="background-image:url('${p.img}')"></div><div class="frame"></div><div class="inner">
         <div class="topo-cena"><img src="${LOGO_BRANCO}" alt="SL Óleos">${p.novo?'<span class="novo">NOVO</span>':""}</div>
+        <div class="inteira"><img src="${p.img}" alt="${p.nome}" loading="lazy"></div>
         <span class="plaqueta" style="align-self:flex-start">${p.m}</span>
         <h2 style="margin-top:12px">${p.nome}</h2><p class="sub">${frase1(p.desc)}</p>
         ${p.cap?`<span class="cap">${p.cap}</span>`:""}${acoes}</div></section>`
@@ -172,13 +182,13 @@ PRODUTOS.forEach(p => {
 });
 const mosaico = (rot, titulo, itens) => `<section class="slide galeria"><div class="inner">
   <div class="eyebrow">${rot}</div><h2>${titulo}</h2>
-  <div class="mos">${itens.slice(0,6).map(g=>`<figure><img src="${mini(g[0])}" alt="${g[1]}" loading="lazy"><figcaption>${g[1]}</figcaption></figure>`).join("")}</div>
+  <div class="mos">${itens.slice(0,6).map(g=>`<figure><img src="${mini(g[0])}" alt="${g[1]}" data-zoom="${foto(g[0])}" loading="lazy"><figcaption>${g[1]}</figcaption></figure>`).join("")}</div>
 </div></section>`;
 h += mosaico("Portfólio","Plantas entregues",GALERIA.obras);
 h += mosaico("Jaú · SP","Nossa fábrica",GALERIA.fabrica);
 h += `<section class="slide pecas"><div class="inner">
   <div class="eyebrow">Pós-venda</div><h2>Peças de reposição</h2><p>${PECAS.desc}</p>
-  <div class="fotos">${PECAS.fotos.map(f=>`<img src="${f[0]}" alt="${f[1]}" loading="lazy">`).join("")}</div>
+  <div class="fotos">${PECAS.fotos.map(f=>`<img src="${f[0]}" alt="${f[1]}" data-zoom="${f[0]}" loading="lazy">`).join("")}</div>
   <ul>${PECAS.maquinas.map(m=>`<li>${m[0]}<span>${m[1]}</span></li>`).join("")}</ul>
   <button class="btn-orc" data-orc="pecas"><span class="lbl">+ Orçamento</span></button>
 </div></section>`;

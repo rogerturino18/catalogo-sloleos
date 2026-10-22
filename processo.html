@@ -52,8 +52,10 @@ h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.02;text-wrap:balanc
 .maq{flex:0 0 72%;max-width:250px;scroll-snap-align:start;background:var(--steel);border:1px solid var(--line);border-radius:12px;overflow:hidden;cursor:pointer;text-align:left;padding:0;display:flex;flex-direction:column}
 .maq .ph{aspect-ratio:4/3;background:#fff;display:flex;align-items:center;justify-content:center;max-width:100%;position:relative}
 .maq .ph img{width:100%;height:100%;object-fit:contain;padding:8px}
-.maq .ph.cena img{object-fit:cover;padding:0}
-.maq .ph.cena::after{content:"";position:absolute;inset:7px;border:2px solid var(--amarelo);border-radius:7px}
+.maq .ph.cena{background:var(--grafite);overflow:hidden;aspect-ratio:1/1}
+.maq .ph.cena img{position:relative;z-index:1;object-fit:contain;padding:12px}
+.maq .ph .desf{position:absolute;inset:-10%;background-size:cover;background-position:center;filter:blur(12px) brightness(.5)}
+.maq .ph.cena::after{content:"";position:absolute;z-index:2;inset:7px;border:2px solid var(--amarelo);border-radius:7px}
 .maq .ph .novo{position:absolute;right:10px;top:10px;z-index:1;font:800 9.5px/1 var(--f-body);letter-spacing:.12em;background:var(--amarelo);color:var(--grafite);padding:6px 8px;border-radius:99px}
 .maq .b{padding:10px 12px 12px;display:flex;flex-direction:column;gap:7px;flex:1}
 .maq .plaqueta{align-self:flex-start;font-size:10px;padding:5px 8px}
@@ -99,7 +101,8 @@ h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.02;text-wrap:balanc
 .sheet .alca{width:44px;height:5px;border-radius:3px;background:#c9c9c6;margin:0 auto 12px}
 .sheet .ft{background:#fff;border-radius:12px;display:flex;justify-content:center;margin-bottom:14px;max-height:34vh;overflow:hidden}
 .sheet .ft img{max-height:34vh;object-fit:contain;padding:10px}
-.sheet .ft.cena img{width:100%;object-fit:cover;padding:0}
+.sheet .ft.cena{background:var(--grafite)}
+.sheet .ft.cena img{object-fit:contain;padding:10px}
 .sheet h3{font-size:24px;font-weight:800;margin:12px 0 0}
 .sheet h3::after{content:"";display:block;width:70px;height:4px;background:var(--amarelo);margin:12px 0}
 .sheet p{color:var(--ink-soft);margin:0 0 12px}
@@ -146,7 +149,7 @@ const ICON_GOTA = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2s7
 const ICON_CHAVE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4 2.5-2.5Z"/></svg>';
 
 const cardMaq = p => `<button class="maq" data-ficha="${p.id}">
-  <div class="ph ${p.cena?"cena":""}">${p.novo?'<span class="novo">NOVO</span>':""}<img src="${p.img}" alt="${p.nome}" loading="lazy"></div>
+  <div class="ph ${p.cena?"cena":""}">${p.cena?`<div class="desf" style="background-image:url('${p.img}')"></div>`:""}${p.novo?'<span class="novo">NOVO</span>':""}<img src="${p.img}" alt="${p.nome}" loading="lazy"></div>
   <div class="b"><span class="plaqueta">${p.m}</span><h3>${p.nome}</h3>${p.cap?`<span class="cap">${p.cap}</span>`:""}
   <span class="btn-orc" role="button" tabindex="0" data-orc="${p.id}"><span class="lbl">+ Orçamento</span></span></div></button>`;
 const de = e => PRODUTOS.filter(p => p.etapa === e);
@@ -170,7 +173,7 @@ h += `<section class="completa"><div class="rot">Ou tudo de uma vez</div><h2>Pla
   <p>Projetamos, fabricamos e montamos a linha inteira, do preparo ao óleo, com montagem eletromecânica, estruturas e tanques.</p>
   <div class="esteira">${de("planta").map(cardMaq).join("")}</div>
   <div class="rot" style="margin-top:6px">Plantas entregues</div>
-  <div class="esteira obras">${GALERIA.obras.slice(0,10).map(g=>`<figure><img src="${mini(g[0])}" alt="${g[1]}" loading="lazy"><figcaption>${g[1]}</figcaption></figure>`).join("")}</div></section>`;
+  <div class="esteira obras">${GALERIA.obras.slice(0,10).map(g=>`<figure><img src="${mini(g[0])}" alt="${g[1]}" data-zoom="${foto(g[0])}" loading="lazy"><figcaption>${g[1]}</figcaption></figure>`).join("")}</div></section>`;
 h += etapa(ICON_CHAVE, "verde", "Pós-venda", "Peças e manutenção", "reposição · montagem · consultoria",
   `<p class="txt">${PECAS.desc} Também fazemos montagem e manutenção de plantas de óleos e alimentos.</p>
    <ul class="lista">${PECAS.maquinas.map(m=>`<li>${m[0]}<span>${m[1]}</span></li>`).join("")}</ul>
