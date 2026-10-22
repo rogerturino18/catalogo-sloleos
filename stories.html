@@ -35,8 +35,8 @@ h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1;text-wrap:balance}
 /* abertura */
 .abertura .inner{justify-content:flex-end}
 .abertura img.logo{width:190px;margin-bottom:auto}
-.abertura h1{font-size:clamp(34px,10vw,52px);font-weight:800;text-transform:uppercase;color:var(--amarelo)}
-.abertura p{font-size:17px;font-weight:600;margin:12px 0 18px;max-width:30ch}
+.abertura .hv-titulo{font-size:clamp(32px,9.6vw,50px)}
+.abertura .hv-texto{font-size:15px}
 .abertura .grafismo{height:28px;width:70%}
 .desliza{display:flex;flex-direction:column;align-items:center;gap:4px;margin-top:26px;font:700 11.5px/1 var(--f-body);letter-spacing:.16em;text-transform:uppercase;color:var(--amarelo)}
 .desliza svg{width:22px;height:22px;animation:sobe 1.6s ease-in-out infinite}
@@ -149,13 +149,12 @@ h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1;text-wrap:balance}
 <script>
 const feed = document.getElementById("feed");
 const frase1 = d => d.split(/(?<=\.)\s/)[0];
-let h = `<section class="slide abertura cena"><div class="bg" style="background-image:url('${foto("obra-noturna")}')"></div>
-  <video class="video" autoplay muted loop playsinline preload="auto" poster="${foto("obra-noturna")}" aria-hidden="true"><source src="${VIDEO_FABRICA}" type="video/mp4"></video>
-  <div class="sombra"></div><div class="frame"></div><div class="inner">
+let h = `<section class="slide abertura"><div class="hv"><img src="${foto("obra-noturna")}" alt=""><video autoplay muted loop playsinline preload="auto" aria-hidden="true"><source src="${VIDEO_FABRICA}" type="video/mp4"></video></div><div class="inner">
   <img class="logo" src="${LOGO_BRANCO}" alt="SL Óleos">
-  <h1>Do grão ao óleo</h1>
-  <p>Máquinas, plantas e peças para extração e refino de óleos vegetais.</p>
-  ${GRAFISMO}
+  <div class="hv-eyebrow">Jaú/SP · Brasil · Catálogo digital</div>
+  <h1 class="hv-titulo">Extração de óleos <span>vegetais</span> de ponta a ponta</h1>
+  <p class="hv-texto">Fabricamos máquinas, plantas completas e peças de reposição para extração e refino de óleos vegetais, com engenharia própria para cada projeto.</p>
+  <div class="hv-botoes"><a class="hv-btn wa" target="_blank" rel="noopener" href="${waLink('Olá! Vi o catálogo da SL Óleos e gostaria de falar com a equipe comercial.')}">${WA_ICON}Falar no WhatsApp</a><button class="hv-btn ghost" type="button" id="verMaq">Ver máquinas</button></div>
   <div class="desliza"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 14l6-6 6 6"/></svg>Deslize para cima</div>
 </div></section>`;
 h += `<section class="slide empresa"><div class="inner">
@@ -211,6 +210,7 @@ let atual = 0;
 function marcar(i){ atual = i; segs.forEach((s,k) => s.className = k < i ? "feito" : k === i ? "atual" : ""); cont.textContent = `${i+1}/${slides.length}`; }
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) marcar(slides.indexOf(e.target)); }), {root:feed, threshold:.6});
 slides.forEach(s => io.observe(s)); marcar(0);
+document.getElementById("verMaq").onclick = () => ir(2);
 const ir = i => slides[Math.max(0,Math.min(slides.length-1,i))].scrollIntoView({behavior:"smooth"});
 document.getElementById("up").onclick = () => ir(atual-1);
 document.getElementById("down").onclick = () => ir(atual+1);

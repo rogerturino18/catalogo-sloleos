@@ -34,8 +34,8 @@ h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.05;text-wrap:balanc
 .capa .topo{display:flex;justify-content:space-between;align-items:center}
 .capa .topo img{width:34cqw}
 .capa .topo span{font:700 2.4cqw/1 var(--f-body);letter-spacing:.14em;color:var(--amarelo)}
-.capa h1{margin-top:auto;font-size:8.4cqw;font-weight:800;text-transform:uppercase;color:var(--amarelo);line-height:.98}
-.capa p{font-size:4.2cqw;font-weight:600;margin:3cqw 0 4cqw;line-height:1.3}
+.capa .hv-titulo{font-size:9cqw;margin:3cqw 0}
+.capa .hv-texto{font-size:3.5cqw;margin:0}
 .capa .grafismo{width:62%;height:6cqw}
 
 /* Índice */
@@ -133,11 +133,11 @@ const ORDEM = {preparo:0,prensagem:1,refino:2,planta:3};
 const LISTA = [...PRODUTOS].sort((a,b)=>ORDEM[a.etapa]-ORDEM[b.etapa]);
 let html = "";
 
-html += `<div class="page capa" data-density="hard"><div class="foto" style="background-image:url('${CAPA}')"></div><div class="moldura-capa"></div><div class="pg">
+html += `<div class="page capa" data-density="hard"><div class="hv"><img src="${foto("obra-noturna")}" alt=""><video autoplay muted loop playsinline preload="auto" aria-hidden="true"><source src="${VIDEO_FABRICA}" type="video/mp4"></video></div><div class="pg">
   <div class="topo"><img src="${LOGO_BRANCO}" alt="SL Óleos"><span>EDIÇÃO 2026</span></div>
-  <h1>Catálogo de equipamentos</h1>
-  <p>Máquinas, plantas e peças para extração e refino de óleos vegetais.</p>
-  ${GRAFISMO}
+  <div class="hv-eyebrow" style="margin-top:auto;font-size:2.4cqw">Jaú/SP · Brasil · Catálogo de equipamentos</div>
+  <h1 class="hv-titulo">Extração de óleos <span>vegetais</span> de ponta a ponta</h1>
+  <p class="hv-texto">Fabricamos máquinas, plantas completas e peças de reposição para extração e refino de óleos vegetais, com engenharia própria para cada projeto.</p>
 </div></div>`;
 
 const grupo = e => LISTA.map((p,i)=>[p.nome,PG_MAQ+i,p.etapa]).filter(x=>x[2]===e);

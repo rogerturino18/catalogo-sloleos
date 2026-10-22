@@ -17,9 +17,9 @@ h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.02;text-wrap:balanc
 .topo{background:var(--grafite);color:#fff;position:relative;overflow:hidden}
 .topo .foto{position:absolute;inset:0;background:url("img/a/obra-vista-externa.jpg") center/cover;opacity:.45}
 .topo .foto::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(33,32,32,.2),rgba(33,32,32,.92) 80%)}
-.topo .wrap{position:relative;padding-block:calc(64px + var(--sa-t)) 30px}
+.topo .wrap{position:relative;padding-block:calc(64px + var(--sa-t)) 40px}
 .topo img.logo{width:170px;margin-bottom:26px}
-.topo h1{font-size:clamp(36px,11vw,64px);font-weight:800;text-transform:uppercase;color:var(--amarelo)}
+.topo .hv-titulo{font-size:clamp(32px,9vw,58px)}
 .topo p{font-size:16px;font-weight:600;margin:12px 0 18px;max-width:38ch}
 .topo .grafismo{height:26px;width:60%}
 
@@ -112,11 +112,12 @@ h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.02;text-wrap:balanc
 </head>
 <body>
 <a class="proto-back" href="./">← Formatos</a>
-<header class="topo"><div class="foto"></div><div class="wrap">
+<header class="topo"><div class="hv" id="hv"></div><div class="wrap">
   <img class="logo" id="logo" alt="SL Óleos">
-  <h1>Do grão ao óleo</h1>
-  <p>Toque em cada etapa da linha para ver os equipamentos que a SL Óleos fabrica para ela.</p>
-  <div id="graf"></div>
+  <div class="hv-eyebrow">Jaú/SP · Brasil · Catálogo digital</div>
+  <h1 class="hv-titulo">Extração de óleos <span>vegetais</span> de ponta a ponta</h1>
+  <p class="hv-texto">Toque em cada etapa da linha, do grão ao óleo, para ver os equipamentos que a SL Óleos fabrica para ela.</p>
+  <div class="hv-botoes" id="hvBotoes"></div>
 </div></header>
 <main class="wrap fluxo" id="fluxo"><div class="tubo" aria-hidden="true"></div></main>
 <footer class="rodape"><div class="wrap">
@@ -142,7 +143,8 @@ h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.02;text-wrap:balanc
 <script>
 document.getElementById("logo").src = LOGO_BRANCO;
 document.getElementById("logoR").src = LOGO_BRANCO;
-document.getElementById("graf").innerHTML = GRAFISMO;
+document.getElementById("hv").innerHTML = `<div class="hv"><img src="${foto("obra-noturna")}" alt=""><video autoplay muted loop playsinline preload="auto" aria-hidden="true"><source src="${VIDEO_FABRICA}" type="video/mp4"></video></div>`;
+document.getElementById("hvBotoes").innerHTML = `<a class="hv-btn wa" target="_blank" rel="noopener" href="${waLink('Olá! Vi o catálogo da SL Óleos e gostaria de falar com a equipe comercial.')}">${WA_ICON}Falar no WhatsApp</a><a class="hv-btn ghost" href="#fluxo">Ver a linha</a>`;
 const fluxo = document.getElementById("fluxo");
 const ICON_GRAO = '<svg viewBox="0 0 24 24" fill="currentColor"><ellipse cx="12" cy="12" rx="6" ry="9" transform="rotate(30 12 12)"/></svg>';
 const ICON_GOTA = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2s7 8 7 13a7 7 0 0 1-14 0c0-5 7-13 7-13Z"/></svg>';
