@@ -132,6 +132,22 @@ h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1;text-wrap:balance}
 .maq.cena .inteira{order:-1}
 .dica-zoom{font-size:13px;color:#bdbcba;margin:-6px 0 14px}
 .pecas .col-b{display:flex;flex-direction:column;flex:1}
+
+/* ===== Celular: foto e texto centralizados juntos, foto na largura toda ===== */
+@media not all and (min-width:820px) and (min-aspect-ratio:1/1){
+  .maq.cena .inner{justify-content:center;padding-top:calc(104px + var(--sa-t))}
+  .maq.cena .topo-cena{position:absolute;top:calc(60px + var(--sa-t));left:22px;right:22px}
+  .maq .inteira{flex:none;position:relative;margin:0 -8px 16px}
+  .maq .inteira img{width:100%;max-height:max(200px,calc(100dvh - 500px));object-fit:contain;border-radius:8px}
+  .pecas .fotos{grid-template-columns:1fr 1fr}
+  .pecas .fotos img:first-child{grid-column:1 / span 2;aspect-ratio:2/1;object-fit:contain;background:#ececeb}
+  .pecas .fotos img:not(:first-child){aspect-ratio:2/1}
+  .pecas h2{margin:6px 0 8px}
+  .pecas p{margin-bottom:10px;font-size:14px}
+  .pecas li{padding:8px 0;font-size:13.5px}
+  .pecas ul{margin-bottom:12px}
+}
+.maq .inteira .ampliar{position:absolute;right:10px;bottom:10px;font:700 10.5px/1 var(--f-body);letter-spacing:.06em;text-transform:uppercase;background:rgba(33,32,32,.78);color:#fff;padding:7px 9px;border-radius:99px;pointer-events:none}
 /* ===== Computador (e-mail, link aberto no PC): cada tela em duas colunas ===== */
 @media (min-width:820px) and (min-aspect-ratio:1/1){
   .inner{max-width:1200px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);grid-template-rows:auto;column-gap:56px;align-items:center;align-content:center;
@@ -222,7 +238,7 @@ PRODUTOS.forEach(p => {
   const acoes = `<div class="acoes"><button class="btn-ficha" data-ficha="${p.id}">Ficha técnica</button><button class="btn-orc" data-orc="${p.id}"><span class="lbl">+ Orçamento</span></button></div>`;
   h += p.cena
     ? `<section class="slide maq cena"><div class="bg desfoque" style="background-image:url('${p.img}')"></div><div class="frame"></div><div class="inner">
-        <div class="inteira"><img src="${p.img}" alt="${p.nome}" loading="lazy"></div>
+        <div class="inteira"><img src="${p.img}" alt="${p.nome}" data-zoom="${p.img}" data-leg="${p.nome}" loading="lazy"><span class="ampliar">⤢ Ampliar</span></div>
         <div class="col">
         <div class="topo-cena"><img src="${LOGO_BRANCO}" alt="SL Óleos">${p.novo?'<span class="novo">NOVO</span>':""}</div>
         <span class="plaqueta" style="align-self:flex-start">${p.m}</span>
