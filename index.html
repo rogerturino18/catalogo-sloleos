@@ -126,6 +126,53 @@ h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1;text-wrap:balance}
 .sheet p{color:var(--ink-soft);margin:0 0 12px}
 .sheet .btn-orc{margin-top:16px;color:var(--grafite);width:100%;padding:14px}
 #orc-bar{left:calc(14px + var(--sa-l));right:calc(14px + var(--sa-r));justify-content:center}
+
+.col{display:contents}
+.maq.cena .topo-cena{order:-2}
+.maq.cena .inteira{order:-1}
+.dica-zoom{font-size:13px;color:#bdbcba;margin:-6px 0 14px}
+.pecas .col-b{display:flex;flex-direction:column;flex:1}
+/* ===== Computador (e-mail, link aberto no PC): cada tela em duas colunas ===== */
+@media (min-width:900px){
+  .inner{max-width:1200px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);grid-template-rows:auto;column-gap:56px;align-items:center;align-content:center;
+    padding:calc(70px + var(--sa-t)) 110px 90px 60px}
+  .col{display:flex;flex-direction:column;justify-content:center;grid-column:2;grid-row:1 / span 2;align-self:center;min-width:0}
+  .col > .plaqueta,.col > .cap,.col > .btn-orc{align-self:flex-start}
+  .inteira,.chapa,.equipe,.mos,.fotos{grid-column:1;grid-row:1 / span 2;margin:0!important}
+  .maq .inteira,.maq .chapa{height:calc(100vh - 190px)}
+  .maq.cena .topo-cena{margin-bottom:22px}
+  .maq h2{font-size:clamp(34px,3.4vw,52px)}
+  .maq .sub{font-size:17px}
+  .maq .acoes{max-width:440px}
+  .cena .frame{inset:calc(40px + var(--sa-t)) 90px 40px 40px}
+  .empresa .equipe{height:calc(100vh - 220px);min-height:0}
+  .empresa .nums{margin-top:26px}
+  .empresa h2{font-size:clamp(30px,3vw,44px)}
+  .empresa p{font-size:16px}
+  .galeria .inner{grid-template-columns:minmax(0,2.2fr) minmax(0,.8fr)}
+  .galeria .mos{height:calc(100vh - 190px);grid-template-columns:repeat(3,1fr)}
+  .galeria h2{font-size:clamp(30px,3vw,46px)}
+  .pecas .inner{grid-template-rows:auto auto}
+  .pecas .col{grid-row:1;align-self:end}
+  .pecas .col-b{grid-row:2;align-self:start;flex:none}
+  .pecas .fotos{grid-template-columns:1fr 1fr;grid-template-rows:1.6fr 1fr;height:calc(100vh - 200px)}
+  .pecas .fotos img{aspect-ratio:auto;height:100%;min-height:0}
+  .pecas .fotos img:first-child{grid-column:1 / span 2;object-fit:contain;background:#ececeb}
+  .contato .inner{display:grid;grid-template-columns:1fr 1fr}
+  .contato .inner > *{grid-column:2}
+  .contato .inner > h2{grid-column:1;grid-row:1 / span 3;font-size:clamp(44px,5vw,76px);margin:0}
+  .contato img.logo{margin-top:30px}
+  .abertura .inner{display:flex;max-width:1200px;justify-content:center;padding-left:60px}
+  .abertura .inner > *{max-width:640px}
+  .abertura img.logo{width:230px;margin-bottom:40px}
+  .abertura .hv-titulo{font-size:clamp(46px,5vw,78px)}
+  .abertura .hv-texto{font-size:18px}
+  .abertura .desliza{align-items:flex-start;margin-top:40px}
+  #orc-bar{left:auto;right:30px;justify-content:flex-end}
+  .sheet{bottom:auto;top:50%;left:50%;right:auto;transform:translate(-50%,-40%) scale(.98);opacity:0;pointer-events:none;width:520px;border-radius:20px;transition:transform .25s,opacity .25s}
+  .aberto .sheet{transform:translate(-50%,-50%);opacity:1;pointer-events:auto}
+  .sheet .alca{display:none}
+}
 @media (min-width:900px){.navs{position:fixed;z-index:40;right:28px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px}
   .navs button{width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);color:#fff;font-size:20px;cursor:pointer}}
 @media (max-width:899px){.navs{display:none}}
@@ -163,37 +210,40 @@ let h = `<section class="slide abertura"><div class="hv"><img src="${foto("obra-
 </div></section>`;
 h += `<section class="slide empresa"><div class="inner">
   <div class="equipe" style="background-image:url('${foto("obra-equipe")}')"></div>
+  <div class="col">
   <div class="eyebrow">Quem somos</div>
   <h2>Performance industrial para o setor vegetal</h2>
   <p>Mais de 30 anos de experiência metalúrgica e 10 anos de soluções para extração de óleos vegetais: equipamentos, plantas completas e engenharia, em ${EMPRESA.paises.join(", ")}.</p>
   <p class="frase">${EMPRESA.frase}</p>
   <div class="nums">${EMPRESA.numeros.map(n=>`<div><b>${n[0]}</b><span>${n[1]}</span></div>`).join("")}</div>
+  </div>
 </div></section>`;
 PRODUTOS.forEach(p => {
   const acoes = `<div class="acoes"><button class="btn-ficha" data-ficha="${p.id}">Ficha técnica</button><button class="btn-orc" data-orc="${p.id}"><span class="lbl">+ Orçamento</span></button></div>`;
   h += p.cena
     ? `<section class="slide maq cena"><div class="bg desfoque" style="background-image:url('${p.img}')"></div><div class="frame"></div><div class="inner">
-        <div class="topo-cena"><img src="${LOGO_BRANCO}" alt="SL Óleos">${p.novo?'<span class="novo">NOVO</span>':""}</div>
         <div class="inteira"><img src="${p.img}" alt="${p.nome}" loading="lazy"></div>
+        <div class="col">
+        <div class="topo-cena"><img src="${LOGO_BRANCO}" alt="SL Óleos">${p.novo?'<span class="novo">NOVO</span>':""}</div>
         <span class="plaqueta" style="align-self:flex-start">${p.m}</span>
         <h2 style="margin-top:12px">${p.nome}</h2><p class="sub">${frase1(p.desc)}</p>
-        ${p.cap?`<span class="cap">${p.cap}</span>`:""}${acoes}</div></section>`
+        ${p.cap?`<span class="cap">${p.cap}</span>`:""}${acoes}</div></div></section>`
     : `<section class="slide maq"><div class="fundo" style="background-image:url('${p.img}')"></div><div class="inner">
         <div class="chapa"><span class="plaqueta">${p.m}</span><img src="${p.img}" alt="${p.nome}" loading="lazy"></div>
-        <div class="eyebrow">${p.cat}</div><h2>${p.nome}</h2>
-        ${p.cap?`<span class="cap">${p.cap}</span>`:""}${acoes}</div></section>`;
+        <div class="col"><div class="eyebrow">${p.cat}</div><h2>${p.nome}</h2>
+        ${p.cap?`<span class="cap">${p.cap}</span>`:""}${acoes}</div></div></section>`;
 });
 const mosaico = (rot, titulo, itens) => `<section class="slide galeria"><div class="inner">
-  <div class="eyebrow">${rot}</div><h2>${titulo}</h2>
+  <div class="col"><div class="eyebrow">${rot}</div><h2>${titulo}</h2><p class="dica-zoom">Toque em uma foto para ver inteira.</p></div>
   <div class="mos">${itens.slice(0,6).map(g=>`<figure><img src="${mini(g[0])}" alt="${g[1]}" data-zoom="${foto(g[0])}" loading="lazy"><figcaption>${g[1]}</figcaption></figure>`).join("")}</div>
 </div></section>`;
 h += mosaico("Portfólio","Plantas entregues",GALERIA.obras);
 h += mosaico("Jaú · SP","Nossa fábrica",GALERIA.fabrica);
 h += `<section class="slide pecas"><div class="inner">
-  <div class="eyebrow">Pós-venda</div><h2>Peças de reposição</h2><p>${PECAS.desc}</p>
+  <div class="col"><div class="eyebrow">Pós-venda</div><h2>Peças de reposição</h2><p>${PECAS.desc}</p></div>
   <div class="fotos">${PECAS.fotos.map(f=>`<img src="${f[0]}" alt="${f[1]}" data-zoom="${f[0]}" loading="lazy">`).join("")}</div>
-  <ul>${PECAS.maquinas.map(m=>`<li>${m[0]}<span>${m[1]}</span></li>`).join("")}</ul>
-  <button class="btn-orc" data-orc="pecas"><span class="lbl">+ Orçamento</span></button>
+  <div class="col col-b"><ul>${PECAS.maquinas.map(m=>`<li>${m[0]}<span>${m[1]}</span></li>`).join("")}</ul>
+  <button class="btn-orc" data-orc="pecas"><span class="lbl">+ Orçamento</span></button></div>
 </div></section>`;
 h += `<section class="slide contato"><div class="inner">
   <h2>Vamos montar a sua planta?</h2>
