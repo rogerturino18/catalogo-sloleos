@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Catálogo SL Óleos</title>
+<meta name="description" content="Catálogo digital SL Óleos — máquinas e plantas para extração de óleos vegetais, peças de reposição, montagem e engenharia. Jaú/SP.">
+<meta property="og:title" content="Catálogo SL Óleos">
+<meta property="og:description" content="Máquinas para extração de óleos vegetais, peças de reposição, montagem e consultoria de engenharia.">
+<meta property="og:image" content="https://images.cdn-files-a.com/uploads/9395824/800_667ee2c623af6.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#14202b">
+<link rel="icon" href="https://files.cdn-files-a.com/uploads/9395824/400_filter_nobg_6925a5370e284.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* Layout: ficha técnica industrial — faixa escura de abertura, blocos em aço claro, chapas numeradas por modelo, botão fixo de WhatsApp */
+:root{
+  --steel:#eceff1;      /* fundo: chapa de aço clara */
+  --plate:#ffffff;      /* cartões */
+  --ink:#15212c;        /* grafite azulado */
+  --ink-soft:#4d5b67;
+  --line:#d3d9de;
+  --oil:#c2861a;        /* âmbar de óleo */
+  --oil-deep:#8f600c;
+  --night:#14202b;
+  --wa:#1f9d55;
+  --f-display:"Saira Condensed","Arial Narrow",Arial,sans-serif;
+  --f-body:"Source Sans 3","Segoe UI",Roboto,Arial,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --gutter:max(18px, env(safe-area-inset-left,0px));
+  --gutter-r:max(18px, env(safe-area-inset-right,0px));
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--steel);color:var(--ink);font:400 17px/1.55 var(--f-body);-webkit-font-smoothing:antialiased}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--f-display);line-height:1.02;margin:0;text-wrap:balance;letter-spacing:.005em}
+.wrap{max-width:1080px;margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter-r)}
+.eyebrow{font:600 13px/1 var(--f-body);letter-spacing:.16em;text-transform:uppercase;color:var(--oil-deep)}
+:focus-visible{outline:3px solid var(--oil);outline-offset:3px;border-radius:4px}
+
+/* Navegação */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--night)}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(20,32,43,.94);backdrop-filter:blur(8px);color:#fff}
+.nav .wrap{display:flex;align-items:center;gap:14px;padding-block:10px}
+.nav img{height:34px;width:auto}
+.nav ul{display:flex;gap:4px;list-style:none;margin:0 0 0 auto;padding:0;overflow-x:auto;scrollbar-width:none}
+.nav ul::-webkit-scrollbar{display:none}
+.nav a{display:block;text-decoration:none;font:600 15px/1 var(--f-display);letter-spacing:.08em;text-transform:uppercase;padding:9px 10px;border-radius:6px;color:#cfd8df;white-space:nowrap}
+.nav a:hover{color:#fff;background:rgba(255,255,255,.08)}
+@media (max-width:640px){.nav .wrap{flex-direction:column;align-items:stretch;gap:6px}.nav .brand{display:flex;justify-content:center}.nav ul{margin:0;justify-content:flex-start}}
+
+/* Abertura */
+.hero{position:relative;background:var(--night);color:#fff;overflow:hidden}
+.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.38}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,32,43,.25) 0%,rgba(20,32,43,.92) 100%)}
+.hero .wrap{position:relative;z-index:1;padding-block:clamp(64px,13vw,128px) clamp(40px,7vw,72px)}
+.hero .eyebrow{color:#e9b552}
+.hero h1{font-size:clamp(42px,8.5vw,84px);font-weight:800;text-transform:uppercase;margin:14px 0 18px;max-width:14ch}
+.hero h1 span{color:var(--oil)}
+.hero p{max-width:52ch;font-size:clamp(17px,2.2vw,20px);color:#d7dfe5;margin:0 0 28px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font:700 17px/1 var(--f-display);letter-spacing:.08em;text-transform:uppercase;padding:15px 22px;border-radius:8px;border:0;cursor:pointer}
+.btn-wa{background:var(--wa);color:#fff}
+.btn-wa:hover{background:#178547}
+.btn-ghost{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.4)}
+.btn-ghost:hover{box-shadow:inset 0 0 0 2px #fff}
+.btn svg{width:20px;height:20px;flex:none}
+
+/* Números */
+.stats{background:var(--oil);color:var(--night)}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.stat{padding-block:22px;padding-inline:14px;border-left:1px solid rgba(20,32,43,.22)}
+.stat:first-child{border-left:0;padding-left:0}
+.stat b{display:block;font:800 clamp(32px,5vw,46px)/1 var(--f-display)}
+.stat span{font-size:14px;font-weight:600;line-height:1.3;display:block;margin-top:6px}
+@media (max-width:640px){.stats .wrap{grid-template-columns:1fr 1fr}.stat{border-left:0;padding-left:0;border-top:1px solid rgba(20,32,43,.22)}.stat:nth-child(-n+2){border-top:0}}
+
+section{padding-block:clamp(56px,9vw,96px)}
+.sec-head{display:flex;flex-direction:column;gap:12px;margin-bottom:36px}
+.sec-head h2{font-size:clamp(36px,6vw,58px);font-weight:800;text-transform:uppercase}
+.sec-head p{margin:0;color:var(--ink-soft);max-width:60ch}
+
+/* Quem somos */
+.about{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,56px);align-items:start}
+.about > *{min-width:0}
+.about p{margin:0 0 16px;max-width:62ch}
+.about figure{margin:0;border-radius:10px;overflow:hidden;aspect-ratio:4/3;background:var(--line);max-width:100%}
+.about figure img{width:100%;height:100%;object-fit:cover}
+.markets{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px;padding:0;list-style:none}
+.markets li{font:600 14px/1 var(--f-body);padding:9px 12px;border-radius:999px;background:var(--plate);border:1px solid var(--line)}
+@media (max-width:780px){.about{grid-template-columns:1fr}}
+
+/* Produtos */
+#produtos{background:var(--plate);border-block:1px solid var(--line)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.chip{font:700 15px/1 var(--f-display);letter-spacing:.08em;text-transform:uppercase;padding:11px 16px;border-radius:6px;border:1.5px solid var(--line);background:var(--steel);color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.card{display:flex;flex-direction:column;background:var(--steel);border-radius:10px;overflow:hidden;border:1px solid var(--line);text-align:left;padding:0;font:inherit;color:inherit;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(20,32,43,.12)}
+.card .ph{aspect-ratio:4/3;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden;max-width:100%}
+.card .ph img{width:100%;height:100%;object-fit:contain;padding:10px}
+.card .body{padding:16px 16px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+.model{font:500 13px/1 var(--f-mono);color:var(--oil-deep);letter-spacing:.04em}
+.card h3{font-size:28px;font-weight:700}
+.card p{margin:0;font-size:15px;color:var(--ink-soft)}
+.card .more{margin-top:auto;padding-top:10px;font:700 14px/1 var(--f-display);letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
+.spec{font:500 13px/1.3 var(--f-mono);background:var(--night);color:#f2c46c;padding:6px 8px;border-radius:4px;align-self:flex-start}
+
+/* Peças e serviços */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px)}
+.two > *{min-width:0}
+@media (max-width:780px){.two{grid-template-columns:1fr}}
+.parts-list{list-style:none;margin:0 0 22px;padding:0;border-top:1px solid var(--line)}
+.parts-list li{display:flex;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);font-weight:600}
+.parts-list li span{font:500 13px/1.6 var(--f-mono);color:var(--ink-soft);text-align:right}
+.parts-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.parts-photos button{padding:0;border:1px solid var(--line);background:#fff;border-radius:8px;overflow:hidden;aspect-ratio:1;cursor:zoom-in;max-width:100%}
+.parts-photos img{width:100%;height:100%;object-fit:cover}
+.services{display:grid;gap:14px}
+.service{background:var(--plate);border:1px solid var(--line);border-radius:10px;padding:20px 20px 22px}
+.service h3{font-size:26px;font-weight:700;text-transform:uppercase;margin-bottom:6px}
+.service p{margin:0;color:var(--ink-soft);font-size:16px}
+
+/* Galeria */
+#galeria{background:var(--night);color:#fff}
+#galeria .sec-head p{color:#b9c5ce}
+#galeria .eyebrow{color:#e9b552}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px}
+.gallery button{padding:0;border:0;border-radius:6px;overflow:hidden;aspect-ratio:1;background:#223241;cursor:zoom-in;position:relative;max-width:100%}
+.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .3s ease}
+.gallery button:hover img{transform:scale(1.05)}
+.gallery .play{position:absolute;inset:auto auto 8px 8px;background:rgba(0,0,0,.6);color:#fff;font:700 12px/1 var(--f-display);letter-spacing:.1em;padding:6px 8px;border-radius:4px}
+
+/* Contato */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px);align-items:start}
+.contact > *{min-width:0}
+@media (max-width:780px){.contact{grid-template-columns:1fr}}
+.c-list{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.c-list li{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.c-list b{font:600 13px/1.6 var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft)}
+.c-list a{text-decoration:none;font-weight:600;overflow-wrap:anywhere}
+.c-list a:hover{color:var(--oil-deep)}
+.wa-box{background:var(--night);color:#fff;border-radius:12px;padding:28px}
+.wa-box h3{font-size:34px;font-weight:800;text-transform:uppercase;margin-bottom:10px}
+.wa-box p{color:#c5d0d8;margin:0 0 20px}
+.socials{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
+.socials a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font:600 15px/1 var(--f-body);padding:10px 14px;border-radius:8px;background:rgba(255,255,255,.08);color:#fff}
+.socials a:hover{background:rgba(255,255,255,.16)}
+.socials svg{width:18px;height:18px}
+
+footer{background:#0e171f;color:#8d9ba6;font-size:14px}
+footer .wrap{padding-block:26px calc(96px + env(safe-area-inset-bottom,0px));display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+
+/* WhatsApp fixo */
+.wa-fab{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:40;display:flex;align-items:center;gap:10px;background:var(--wa);color:#fff;text-decoration:none;font:700 16px/1 var(--f-display);letter-spacing:.08em;text-transform:uppercase;padding:14px 18px 14px 14px;border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.28)}
+.wa-fab svg{width:28px;height:28px}
+.wa-fab:hover{background:#178547}
+
+/* Modal / lightbox */
+dialog{border:0;padding:0;border-radius:12px;max-width:min(920px,calc(100vw - 24px));width:100%;max-height:calc(100dvh - 24px);background:var(--plate);color:var(--ink);overflow:auto}
+dialog::backdrop{background:rgba(10,16,22,.82)}
+.m-grid{display:grid;grid-template-columns:1.1fr 1fr}
+.m-grid > *{min-width:0}
+.m-img{background:#fff;display:flex;align-items:center;justify-content:center;min-height:260px}
+.m-img img{max-height:70dvh;object-fit:contain;padding:14px}
+.m-body{padding:26px 24px;display:flex;flex-direction:column;gap:12px}
+.m-body h3{font-size:42px;font-weight:800}
+.m-body p{margin:0;color:var(--ink-soft)}
+.x{position:sticky;top:0;float:right;margin:10px 10px -50px 0;z-index:2;width:40px;height:40px;border-radius:50%;border:0;background:var(--night);color:#fff;font-size:22px;line-height:1;cursor:pointer}
+@media (max-width:700px){.m-grid{grid-template-columns:1fr}.m-body h3{font-size:34px}}
+#lightbox{background:#000;max-width:min(1200px,calc(100vw - 16px))}
+#lightbox .lb-media{display:flex;align-items:center;justify-content:center;min-height:200px}
+#lightbox img,#lightbox video{max-height:calc(100dvh - 40px);width:auto;margin:0 auto}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.18);color:#fff;font-size:24px;cursor:pointer}
+.lb-prev{left:8px}.lb-next{right:8px}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Seções">
+  <div class="wrap">
+    <a class="brand" href="#topo" aria-label="SL Óleos — início"><img src="https://files.cdn-files-a.com/uploads/9395824/400_filter_nobg_6925a5370e284.png" alt="SL Óleos" width="120" height="34"></a>
+    <ul>
+      <li><a href="#quem-somos">Quem somos</a></li>
+      <li><a href="#produtos">Máquinas</a></li>
+      <li><a href="#pecas">Peças</a></li>
+      <li><a href="#galeria">Fotos</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="topo">
+  <img class="poster" src="https://images.cdn-files-a.com/uploads/9395824/800_667ee2c623af6.jpg" alt="">
+  <video autoplay muted loop playsinline preload="metadata" poster="https://images.cdn-files-a.com/uploads/9395824/800_667ee2c623af6.jpg" aria-hidden="true">
+    <source src="https://cdn-media.f-static.net/uploads/9395824/normal_667ecd2385512.mp4" type="video/mp4">
+  </video>
+  <div class="wrap">
+    <div class="eyebrow">Jaú/SP · Brasil · catálogo digital</div>
+    <h1>Extração de óleos <span>vegetais</span> de ponta a ponta</h1>
+    <p>Fabricamos máquinas, plantas completas e peças de reposição para extração e refino de óleos vegetais, com engenharia própria para cada projeto.</p>
+    <div class="cta-row">
+      <a class="btn btn-wa js-wa" href="#" data-msg="Olá! Vi o catálogo da SL Óleos e gostaria de falar com a equipe comercial.">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3Z"/></svg>
+        Falar no WhatsApp
+      </a>
+      <a class="btn btn-ghost" href="#produtos">Ver máquinas</a>
+    </div>
+  </div>
+</header>
+
+<div class="stats" aria-label="Números">
+  <div class="wrap">
+    <div class="stat"><b>+10</b><span>anos no setor de óleos vegetais</span></div>
+    <div class="stat"><b>7</b><span>plantas de extração entregues</span></div>
+    <div class="stat"><b>1</b><span>planta de refino concluída</span></div>
+    <div class="stat"><b>5</b><span>países atendidos</span></div>
+  </div>
+</div>
+
+<section id="quem-somos">
+  <div class="wrap about">
+    <div>
+      <div class="sec-head">
+        <div class="eyebrow">Quem somos</div>
+        <h2>Engenharia que nasceu dentro da planta</h2>
+      </div>
+      <p>A SL Óleos foi fundada a partir da experiência de muitos anos de seus sócios no processamento de óleos vegetais e hoje é uma das principais prestadoras de serviço para plantas de processo do segmento.</p>
+      <p>Fabricamos equipamentos, estruturas e tanques, e fazemos montagem eletromecânica. Cada projeto é desenvolvido pela nossa engenharia de acordo com a necessidade do cliente, com fabricação própria de itens específicos e parcerias estratégicas para grandes volumes.</p>
+      <p>Atendemos plantas de óleo de palma, óleos especiais e o mercado externo.</p>
+      <ul class="markets" aria-label="Países atendidos">
+        <li>Brasil</li><li>Argentina</li><li>Honduras</li><li>Peru</li><li>Portugal</li>
+      </ul>
+    </div>
+    <figure><img src="https://images.cdn-files-a.com/uploads/9395824/2000_667ece929b191.jpg" alt="Equipamento fabricado pela SL Óleos" loading="lazy"></figure>
+  </div>
+</section>
+
+<section id="produtos">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Linha de fabricação</div>
+      <h2>Máquinas e instalações</h2>
+      <p>Toque em um modelo para ver detalhes e pedir orçamento direto pelo WhatsApp.</p>
+    </div>
+    <div class="filters" role="group" aria-label="Filtrar por categoria">
+      <button class="chip" aria-pressed="true" data-f="todos">Todos</button>
+      <button class="chip" aria-pressed="false" data-f="instalacao">Instalações</button>
+      <button class="chip" aria-pressed="false" data-f="prensa">Prensas</button>
+      <button class="chip" aria-pressed="false" data-f="preparo">Preparo e outros</button>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section id="pecas">
+  <div class="wrap two">
+    <div>
+      <div class="sec-head">
+        <div class="eyebrow">Reposição</div>
+        <h2>Peças de reposição</h2>
+        <p>Fabricamos helicoides, barras de prensagem e demais componentes de desgaste para prensas de extração.</p>
+      </div>
+      <ul class="parts-list">
+        <li>Prensas Masiero <span>PE100 · PP4</span></li>
+        <li>Prensas Masiero <span>PE25</span></li>
+        <li>Prensas Piratininga <span>R158</span></li>
+        <li>Indústria de óleo de palma <span>diversos</span></li>
+      </ul>
+      <div class="parts-photos" id="parts"></div>
+      <div style="margin-top:22px">
+        <a class="btn btn-wa js-wa" href="#" data-msg="Olá! Preciso de peças de reposição para prensa. Modelo da máquina: ">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z"/></svg>
+          Cotar peças
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="sec-head">
+        <div class="eyebrow">Serviços</div>
+        <h2>Além da fabricação</h2>
+      </div>
+      <div class="services">
+        <div class="service"><h3>Plantas completas</h3><p>Projeto e fornecimento de plantas de extração mecânica e refino de óleos vegetais, do preparo da semente ao óleo filtrado.</p></div>
+        <div class="service"><h3>Montagem e manutenção</h3><p>Montagem eletromecânica, estruturas, tanques e manutenção de plantas de óleos e alimentos.</p></div>
+        <div class="service"><h3>Consultoria de engenharia</h3><p>Engenharia industrial para ampliação de capacidade, adequação de processo e projetos sob medida.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="galeria">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Galeria</div>
+      <h2>Fábrica e obras</h2>
+      <p>Equipamentos em fabricação, montagens em campo e plantas em operação.</p>
+    </div>
+    <div class="gallery" id="gallery"></div>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="wrap contact">
+    <div>
+      <div class="sec-head">
+        <div class="eyebrow">Contato</div>
+        <h2>Fale com a SL Óleos</h2>
+      </div>
+      <ul class="c-list">
+        <li><b>Telefone</b><a href="tel:+551436261777">(14) 3626-1777</a></li>
+        <li><b>Comercial</b><a href="mailto:comercial@sloleos.com.br">comercial@sloleos.com.br</a></li>
+        <li><b>Engenharia</b><a href="mailto:engenharia@sloleos.com.br">engenharia@sloleos.com.br</a></li>
+        <li><b>Geral</b><a href="mailto:sloleos@sloleos.com.br">sloleos@sloleos.com.br</a></li>
+        <li><b>Endereço</b><a href="https://www.google.com/maps/search/?api=1&query=Rua+Francisco+Jos%C3%A9+Caseiro%2C+190%2C+Ja%C3%BA+-+SP" target="_blank" rel="noopener">Rua Francisco José Caseiro, 190<br>Jaú/SP · ver no mapa</a></li>
+        <li><b>Site</b><a href="https://www.sloleos.com.br" target="_blank" rel="noopener">www.sloleos.com.br</a></li>
+      </ul>
+    </div>
+    <div class="wa-box">
+      <h3>Orçamento rápido</h3>
+      <p>Mande o modelo da máquina, a semente e a capacidade desejada (kg/h). Nossa equipe responde pelo WhatsApp.</p>
+      <a class="btn btn-wa js-wa" href="#" data-msg="Olá! Gostaria de um orçamento.&#10;Semente: &#10;Capacidade desejada (kg/h): ">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z"/></svg>
+        Pedir orçamento
+      </a>
+      <div class="socials">
+        <a href="https://www.instagram.com/sl_oleos" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>Instagram</a>
+        <a href="https://www.linkedin.com/company/sl-%C3%B3leos/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4V21H3V9.75Zm6.5 0h3.8v1.6h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4V9.75Z"/></svg>LinkedIn</a>
+        <a href="https://www.facebook.com/profile.php?id=61584366655061" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H8v4h2v8h4v-8h3l1-4h-4V8Z"/></svg>Facebook</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>SL Óleos · M.E. Massufaro Engenharia Industrial Ltda · Jaú/SP</span>
+    <span>© 2026</span>
+  </div>
+</footer>
+
+<a class="wa-fab js-wa" href="#" data-msg="Olá! Vi o catálogo da SL Óleos e gostaria de mais informações." aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.5-.3Z"/></svg>
+  WhatsApp
+</a>
+
+<dialog id="modal" aria-labelledby="m-title">
+  <button class="x" data-close aria-label="Fechar">×</button>
+  <div class="m-grid">
+    <div class="m-img"><img id="m-img" src="" alt=""></div>
+    <div class="m-body">
+      <div class="model" id="m-model"></div>
+      <h3 id="m-title"></h3>
+      <span class="spec" id="m-spec" hidden></span>
+      <p id="m-desc"></p>
+      <a class="btn btn-wa" id="m-wa" href="#" target="_blank" rel="noopener" style="align-self:flex-start;margin-top:8px">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Z"/></svg>
+        Pedir orçamento deste modelo
+      </a>
+    </div>
+  </div>
+</dialog>
+
+<dialog id="lightbox" aria-label="Foto ampliada">
+  <button class="x" data-close aria-label="Fechar">×</button>
+  <div class="lb-media" id="lb-media"></div>
+  <button class="lb-nav lb-prev" id="lb-prev" aria-label="Anterior">‹</button>
+  <button class="lb-nav lb-next" id="lb-next" aria-label="Próxima">›</button>
+</dialog>
+
+<script>
+/* ===== CONFIGURAÇÃO — altere aqui ===== */
+const WHATSAPP = "551436261777"; // DDI + DDD + número, só dígitos. Confirmar o número de WhatsApp comercial.
+
+const CDN = "https://files.cdn-files-a.com/uploads/9395824/";
+const CDN2 = "https://images.cdn-files-a.com/uploads/9395824/";
+
+const PRODUTOS = [
+  {m:"PSL 300", cat:"instalacao", nome:"Instalação PSL 300", spec:"600 – 1.000 kg/h", img:CDN+"2000_667ee6b529ce5.jpg",
+   desc:"Instalação de extração mecânica para sementes ricas em óleo, entregando um produto de alto valor agregado."},
+  {m:"PSL 600", cat:"instalacao", nome:"Instalação PSL 600", img:CDN+"2000_66d7676e50970.jpg",
+   desc:"Instalação de extração mecânica de maior porte. Capacidade e configuração definidas pela engenharia conforme a semente e o volume do cliente."},
+  {m:"LINHAÇA", cat:"instalacao", nome:"Linha para linhaça", spec:"1.000 kg/h", img:CDN+"2000_66d768e1f1429.jpg",
+   desc:"Instalação de extração mecânica dedicada à extração de óleo de sementes de linhaça."},
+  {m:"PTE-100", cat:"prensa", nome:"Prensa PTE-100", spec:"até 2.500 kg/h", img:CDN+"2000_67c5b13285221.jpg",
+   desc:"Prensa para soja extrusada, amendoim, gergelim, cártamo, girassol e outras sementes."},
+  {m:"PT30", cat:"prensa", nome:"Prensa PT30", img:CDN+"2000_667ee617a5fd3.png",
+   desc:"Eixo com helicoides que conduz o material por volumes cada vez menores, gerando a pressão para retirar o óleo. O óleo passa por barras de prensagem com aberturas variadas e segue para limpeza."},
+  {m:"PT30E", cat:"prensa", nome:"Prensa expeller PT30E", img:CDN+"2000_667ee617bfcb4.png",
+   desc:"Prensa expeller de alta pressão para extração mecânica de óleo."},
+  {m:"PE250", cat:"prensa", nome:"Prensa PE250", img:CDN+"2000_667ee617d1b46.png",
+   desc:"Prensa para extração mecânica de óleos vegetais. Consulte a configuração ideal para sua semente."},
+  {m:"PT2", cat:"prensa", nome:"Prensa PT2", img:CDN+"2000_667ee6178b30d.png",
+   desc:"Prensa para extração mecânica de óleos vegetais. Consulte a configuração ideal para sua semente."},
+  {m:"MOINHO", cat:"preparo", nome:"Moinho laminador", img:CDN+"2000_667ee6180ca28.png",
+   desc:"Laminação das sementes no preparo para a prensagem."},
+  {m:"SLC10", cat:"preparo", nome:"SLC10", img:CDN+"2000_667ee617e259f.png",
+   desc:"Equipamento da linha SL Óleos. Fale com a engenharia para especificações."}
+];
+
+const PECAS = [
+  {src:CDN+"2000_667eea9e91ad2.png", alt:"Helicoide"},
+  {src:CDN+"2000_667eea9dbdadd.png", alt:"Barras de prensagem"},
+  {src:CDN+"2000_667eea9e918f8.png", alt:"Peça de reposição"}
+];
+
+const GALERIA = [
+  CDN2+"2000_667ece929b191.jpg", "v:https://cdn-media.f-static.net/uploads/9395824/normal_670665b270bd8.mp4",
+  CDN+"2000_66b4ce9b0d154.jpg", "v:https://cdn-media.f-static.net/uploads/9395824/normal_670665b193a38.mp4",
+  CDN2+"2000_667ece92c3f09.jpg", CDN+"2000_670665b04f488.jpg",
+  CDN2+"2000_667ece7df2d9b.jpg", CDN+"2000_670665aec8f78.jpg",
+  CDN2+"2000_667ece7df2ce7.jpg", CDN+"2000_670665af57142.jpg",
+  CDN2+"2000_667f12075afd5.jpg", CDN+"2000_66d7685117ea8.jpg",
+  CDN2+"2000_667ece33edefb.jpg", CDN+"2000_66d76851ab99c.jpg",
+  CDN2+"2000_667ece7def133.jpg", CDN+"2000_66d76851aae2a.jpg"
+];
+/* ===================================== */
+
+const waLink = msg => "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(msg);
+document.querySelectorAll(".js-wa").forEach(a => {
+  a.href = waLink(a.dataset.msg || "Olá!");
+  a.target = "_blank"; a.rel = "noopener";
+});
+
+/* Produtos */
+const grid = document.getElementById("grid");
+function renderGrid(f){
+  grid.innerHTML = "";
+  PRODUTOS.filter(p => f === "todos" || p.cat === f).forEach(p => {
+    const b = document.createElement("button");
+    b.className = "card"; b.type = "button";
+    b.innerHTML = `<div class="ph"><img src="${p.img}" alt="${p.nome}" loading="lazy"></div>
+      <div class="body"><span class="model">${p.m}</span><h3>${p.nome}</h3>
+      ${p.spec ? `<span class="spec">${p.spec}</span>` : ""}
+      <p>${p.desc.length > 92 ? p.desc.slice(0, 90).replace(/\s\S*$/, "") + "…" : p.desc}</p>
+      <span class="more">Ver detalhes →</span></div>`;
+    b.addEventListener("click", () => openProduct(p));
+    grid.appendChild(b);
+  });
+}
+document.querySelectorAll(".chip").forEach(c => c.addEventListener("click", () => {
+  document.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", x === c));
+  renderGrid(c.dataset.f);
+}));
+renderGrid("todos");
+
+const modal = document.getElementById("modal");
+function openProduct(p){
+  document.getElementById("m-img").src = p.img;
+  document.getElementById("m-img").alt = p.nome;
+  document.getElementById("m-model").textContent = p.m;
+  document.getElementById("m-title").textContent = p.nome;
+  const s = document.getElementById("m-spec");
+  s.hidden = !p.spec; s.textContent = p.spec ? "Capacidade: " + p.spec : "";
+  document.getElementById("m-desc").textContent = p.desc;
+  document.getElementById("m-wa").href = waLink(`Olá! Vi o catálogo e gostaria de um orçamento do modelo ${p.nome} (${p.m}).`);
+  modal.showModal();
+}
+
+/* Lightbox */
+const lb = document.getElementById("lightbox"), lbMedia = document.getElementById("lb-media");
+let lbList = [], lbIdx = 0;
+function showLb(){
+  const it = lbList[lbIdx];
+  lbMedia.innerHTML = it.startsWith("v:")
+    ? `<video src="${it.slice(2)}" controls autoplay playsinline></video>`
+    : `<img src="${it}" alt="Foto ${lbIdx + 1} de ${lbList.length}">`;
+}
+function openLb(list, i){ lbList = list; lbIdx = i; showLb(); lb.showModal(); }
+document.getElementById("lb-prev").onclick = () => { lbIdx = (lbIdx - 1 + lbList.length) % lbList.length; showLb(); };
+document.getElementById("lb-next").onclick = () => { lbIdx = (lbIdx + 1) % lbList.length; showLb(); };
+
+const gal = document.getElementById("gallery");
+GALERIA.forEach((it, i) => {
+  const b = document.createElement("button"); b.type = "button";
+  if (it.startsWith("v:")) {
+    b.innerHTML = `<video src="${it.slice(2)}#t=0.5" muted playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover"></video><span class="play">▶ VÍDEO</span>`;
+    b.setAttribute("aria-label", "Abrir vídeo");
+  } else {
+    b.innerHTML = `<img src="${it}" alt="Foto da galeria ${i + 1}" loading="lazy">`;
+  }
+  b.addEventListener("click", () => openLb(GALERIA, i));
+  gal.appendChild(b);
+});
+
+const parts = document.getElementById("parts");
+PECAS.forEach((p, i) => {
+  const b = document.createElement("button"); b.type = "button";
+  b.innerHTML = `<img src="${p.src}" alt="${p.alt}" loading="lazy">`;
+  b.addEventListener("click", () => openLb(PECAS.map(x => x.src), i));
+  parts.appendChild(b);
+});
+
+/* Fechar diálogos */
+document.querySelectorAll("dialog").forEach(d => {
+  d.addEventListener("click", e => { if (e.target === d || e.target.hasAttribute("data-close")) d.close(); });
+  d.addEventListener("close", () => { if (d === lb) lbMedia.innerHTML = ""; });
+});
+document.addEventListener("keydown", e => {
+  if (!lb.open) return;
+  if (e.key === "ArrowRight") document.getElementById("lb-next").click();
+  if (e.key === "ArrowLeft") document.getElementById("lb-prev").click();
+});
+</script>
+</body>
+</html>

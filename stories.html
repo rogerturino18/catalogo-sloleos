@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Catálogo SL Óleos · Stories</title>
+<meta name="theme-color" content="#212020">
+<link rel="icon" href="img/logo-v.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap">
+<link rel="stylesheet" href="lib/base.css">
+<style>
+/* Layout: uma máquina por tela no padrão dos posts SL (foto com moldura amarela, título amarelo) */
+html,body{height:100%;background:var(--grafite)}
+body{color:#fff;overflow:hidden}
+.feed{height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
+.feed::-webkit-scrollbar{display:none}
+.slide{height:100%;scroll-snap-align:start;scroll-snap-stop:always;position:relative;overflow:hidden;display:flex;justify-content:center}
+.inner{position:relative;z-index:2;width:100%;max-width:520px;height:100%;display:flex;flex-direction:column;
+  padding:calc(62px + var(--sa-t)) max(22px,var(--sa-r)) calc(86px + var(--sa-b)) max(22px,var(--sa-l))}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1;text-wrap:balance}
+.amarelo{color:var(--amarelo)}
+
+.prog{position:fixed;z-index:40;left:0;right:0;top:0;padding:calc(8px + var(--sa-t)) max(10px,var(--sa-r)) 0 max(10px,var(--sa-l));display:flex;gap:3px;pointer-events:none;justify-content:center}
+.prog i{flex:1;max-width:40px;height:3px;border-radius:2px;background:rgba(255,255,255,.22)}
+.prog i.feito{background:var(--amarelo)}
+.prog i.atual{background:#fff}
+.proto-back{top:calc(18px + var(--sa-t))}
+.contador{position:fixed;z-index:40;right:calc(14px + var(--sa-r));top:calc(21px + var(--sa-t));font:700 11px/1 var(--f-body);color:#d6d6d4;letter-spacing:.06em}
+
+/* moldura amarela em tela cheia (cena) */
+.cena .bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.cena .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(33,32,32,.25) 0%,rgba(33,32,32,0) 30%,rgba(33,32,32,.55) 55%,rgba(33,32,32,.96) 82%)}
+.cena .frame{position:absolute;z-index:1;inset:calc(48px + var(--sa-t)) max(12px,var(--sa-r)) calc(74px + var(--sa-b)) max(12px,var(--sa-l));border:2px solid var(--amarelo);border-radius:14px;pointer-events:none}
+
+/* abertura */
+.abertura .inner{justify-content:flex-end}
+.abertura img.logo{width:190px;margin-bottom:auto}
+.abertura h1{font-size:clamp(34px,10vw,52px);font-weight:800;text-transform:uppercase;color:var(--amarelo)}
+.abertura p{font-size:17px;font-weight:600;margin:12px 0 18px;max-width:30ch}
+.abertura .grafismo{height:28px;width:70%}
+.desliza{display:flex;flex-direction:column;align-items:center;gap:4px;margin-top:26px;font:700 11.5px/1 var(--f-body);letter-spacing:.16em;text-transform:uppercase;color:var(--amarelo)}
+.desliza svg{width:22px;height:22px;animation:sobe 1.6s ease-in-out infinite}
+@keyframes sobe{50%{transform:translateY(-7px)}}
+
+/* empresa */
+.empresa{background:linear-gradient(170deg,var(--grafite-2),var(--grafite))}
+.eyebrow{font:700 11px/1 var(--f-body);letter-spacing:.18em;text-transform:uppercase;color:var(--verde-claro);margin:10px 0 12px}
+.empresa h2{font-size:clamp(22px,6.6vw,32px);font-weight:800}
+.empresa h2::after{content:"";display:block;width:80px;height:4px;background:var(--amarelo);margin-top:12px}
+.empresa p{color:#d2d2d0;margin:12px 0 0;font-size:14px}
+.empresa .frase{font-style:italic;font-weight:700;color:#fff;border-left:4px solid var(--verde-claro);padding-left:12px}
+.empresa .nums{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto}
+.empresa .nums div{background:rgba(255,255,255,.06);border-radius:12px;padding:10px 12px}
+.empresa .nums b{display:block;font:800 28px/1 var(--f-display);color:var(--amarelo)}
+.empresa .nums span{font-size:12.5px;font-weight:600;color:#d2d2d0}
+
+/* máquina */
+.maq .fundo{position:absolute;inset:-40px;background-size:cover;background-position:center;filter:blur(38px) saturate(.5);opacity:.22}
+.maq.cena .inner{justify-content:flex-end}
+.maq .chapa{flex:1;min-height:0;background:#fff;border-radius:16px;position:relative;display:flex;align-items:center;justify-content:center;box-shadow:0 20px 50px rgba(0,0,0,.4);margin-bottom:6px}
+.maq .chapa img{max-width:100%;max-height:100%;object-fit:contain;padding:18px}
+.maq .chapa .plaqueta{position:absolute;left:12px;top:12px}
+.maq .topo-cena{margin-bottom:auto;display:flex;justify-content:space-between;align-items:center}
+.maq .topo-cena img{width:120px}
+.novo{font:800 10.5px/1 var(--f-body);letter-spacing:.12em;background:var(--amarelo);color:var(--grafite);padding:7px 10px;border-radius:99px}
+.maq .eyebrow{margin:14px 0 8px}
+.maq h2{font-size:clamp(30px,9vw,44px);font-weight:800;text-transform:uppercase;color:var(--amarelo)}
+.maq .sub{font-size:15.5px;font-weight:600;margin:10px 0 0;line-height:1.35}
+.maq .cap{display:inline-block;margin-top:12px;font:800 12.5px/1 var(--f-body);color:var(--grafite);background:var(--amarelo);padding:8px 10px;border-radius:6px;align-self:flex-start}
+.maq .acoes{display:flex;gap:10px;margin-top:16px}
+.maq .acoes button{flex:1}
+.btn-ficha{display:inline-flex;align-items:center;justify-content:center;border:0;background:#fff;color:var(--grafite);border-radius:999px;padding:12px 14px;font:700 12.5px/1 var(--f-body);letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+.maq .btn-orc{color:#fff;padding:12px 14px}
+
+/* equipe e galerias */
+.empresa .equipe{height:26%;min-height:120px;border-radius:14px;background-size:cover;background-position:center 30%;outline:2px solid var(--amarelo);outline-offset:-8px}
+.empresa .eyebrow{margin-top:18px}
+.galeria{background:var(--grafite)}
+.galeria h2{font-size:clamp(26px,8vw,38px);font-weight:800;text-transform:uppercase;color:var(--amarelo);margin-bottom:16px}
+.mos{flex:1;min-height:0;display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:8px}
+.mos figure{margin:0;position:relative;border-radius:10px;overflow:hidden;min-height:0}
+.mos img{width:100%;height:100%;object-fit:cover}
+.mos figcaption{position:absolute;left:0;right:0;bottom:0;padding:18px 8px 7px;font:700 10.5px/1.2 var(--f-body);background:linear-gradient(transparent,rgba(0,0,0,.75))}
+/* peças */
+.pecas{background:var(--grafite-2)}
+.pecas h2{font-size:clamp(28px,8.4vw,40px);font-weight:800;text-transform:uppercase;color:var(--amarelo);margin:10px 0 10px}
+.pecas p{color:#d2d2d0;margin:0 0 14px}
+.pecas .fotos{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.pecas .fotos img{aspect-ratio:1;width:100%;object-fit:cover;border-radius:10px;background:#fff}
+.pecas ul{list-style:none;margin:0 0 16px;padding:0}
+.pecas li{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.12);font-weight:700;font-size:14.5px}
+.pecas li span{font-weight:600;color:var(--verde-claro)}
+.pecas .btn-orc{color:#fff;align-self:flex-start;margin-top:auto}
+
+/* contato — variação 04 do manual */
+.contato{background:var(--amarelo);color:var(--grafite)}
+.contato h2{font-size:clamp(34px,10.5vw,52px);font-weight:800;text-transform:uppercase;margin:24px 0 20px}
+.contato .wa{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--grafite);color:#fff;text-decoration:none;border-radius:14px;padding:18px;font:800 15px/1 var(--f-body);letter-spacing:.06em;text-transform:uppercase}
+.contato .wa svg{width:26px;height:26px;color:#5fd38d}
+.contato dl{margin:24px 0 0;display:grid;grid-template-columns:auto 1fr;gap:10px 16px;font-size:14.5px;font-weight:600}
+.contato dt{font:700 10.5px/1.8 var(--f-body);letter-spacing:.14em;text-transform:uppercase;opacity:.65}
+.contato dd{margin:0;overflow-wrap:anywhere}
+.contato a{color:inherit}
+.contato img.logo{width:180px;margin-top:auto}
+
+/* ficha */
+.sheet-bg{position:fixed;inset:0;z-index:80;background:rgba(10,10,10,.6);opacity:0;pointer-events:none;transition:opacity .25s}
+.sheet{position:fixed;z-index:81;left:0;right:0;bottom:0;margin:0 auto;max-width:560px;background:var(--paper);color:var(--ink);border-radius:20px 20px 0 0;padding:10px max(20px,var(--sa-r)) calc(24px + var(--sa-b)) max(20px,var(--sa-l));transform:translateY(105%);transition:transform .32s cubic-bezier(.2,.8,.2,1);max-height:82%;overflow:auto}
+.aberto .sheet-bg{opacity:1;pointer-events:auto}
+.aberto .sheet{transform:none}
+.sheet .alca{width:44px;height:5px;border-radius:3px;background:#c9c9c6;margin:0 auto 14px}
+.sheet h3{font-size:26px;font-weight:800;margin:12px 0 0}
+.sheet h3::after{content:"";display:block;width:70px;height:4px;background:var(--amarelo);margin:12px 0}
+.sheet p{color:var(--ink-soft);margin:0 0 12px}
+.sheet .btn-orc{margin-top:16px;color:var(--grafite);width:100%;padding:14px}
+#orc-bar{left:calc(14px + var(--sa-l));right:calc(14px + var(--sa-r));justify-content:center}
+@media (min-width:900px){.navs{position:fixed;z-index:40;right:28px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px}
+  .navs button{width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);color:#fff;font-size:20px;cursor:pointer}}
+@media (max-width:899px){.navs{display:none}}
+</style>
+</head>
+<body>
+<a class="proto-back" href="./">← Formatos</a>
+<div class="prog" id="prog"></div>
+<div class="contador" id="contador"></div>
+<div class="navs"><button id="up" aria-label="Anterior">↑</button><button id="down" aria-label="Próximo">↓</button></div>
+<main class="feed" id="feed"></main>
+<div id="sheetWrap">
+  <div class="sheet-bg" id="sheetBg"></div>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sh-t">
+    <div class="alca"></div>
+    <span class="plaqueta" id="sh-m"></span>
+    <h3 id="sh-t"></h3>
+    <p id="sh-d"></p>
+    <table class="ficha" id="sh-f"></table>
+    <button class="btn-orc" id="sh-o"><span class="lbl">+ Orçamento</span></button>
+  </div>
+</div>
+<div id="orc-bar"></div>
+
+<script src="lib/dados.js"></script>
+<script>
+const feed = document.getElementById("feed");
+const frase1 = d => d.split(/(?<=\.)\s/)[0];
+let h = `<section class="slide abertura cena"><div class="bg" style="background-image:url('${foto("obra-noturna")}')"></div><div class="frame"></div><div class="inner">
+  <img class="logo" src="${LOGO_BRANCO}" alt="SL Óleos">
+  <h1>Do grão ao óleo</h1>
+  <p>Máquinas, plantas e peças para extração e refino de óleos vegetais.</p>
+  ${GRAFISMO}
+  <div class="desliza"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 14l6-6 6 6"/></svg>Deslize para cima</div>
+</div></section>`;
+h += `<section class="slide empresa"><div class="inner">
+  <div class="equipe" style="background-image:url('${foto("obra-equipe")}')"></div>
+  <div class="eyebrow">Quem somos</div>
+  <h2>Performance industrial para o setor vegetal</h2>
+  <p>Mais de 30 anos de experiência metalúrgica e 10 anos de soluções para extração de óleos vegetais: equipamentos, plantas completas e engenharia, em ${EMPRESA.paises.join(", ")}.</p>
+  <p class="frase">${EMPRESA.frase}</p>
+  <div class="nums">${EMPRESA.numeros.map(n=>`<div><b>${n[0]}</b><span>${n[1]}</span></div>`).join("")}</div>
+</div></section>`;
+PRODUTOS.forEach(p => {
+  const acoes = `<div class="acoes"><button class="btn-ficha" data-ficha="${p.id}">Ficha técnica</button><button class="btn-orc" data-orc="${p.id}"><span class="lbl">+ Orçamento</span></button></div>`;
+  h += p.cena
+    ? `<section class="slide maq cena"><div class="bg" style="background-image:url('${p.img}')"></div><div class="frame"></div><div class="inner">
+        <div class="topo-cena"><img src="${LOGO_BRANCO}" alt="SL Óleos">${p.novo?'<span class="novo">NOVO</span>':""}</div>
+        <span class="plaqueta" style="align-self:flex-start">${p.m}</span>
+        <h2 style="margin-top:12px">${p.nome}</h2><p class="sub">${frase1(p.desc)}</p>
+        ${p.cap?`<span class="cap">${p.cap}</span>`:""}${acoes}</div></section>`
+    : `<section class="slide maq"><div class="fundo" style="background-image:url('${p.img}')"></div><div class="inner">
+        <div class="chapa"><span class="plaqueta">${p.m}</span><img src="${p.img}" alt="${p.nome}" loading="lazy"></div>
+        <div class="eyebrow">${p.cat}</div><h2>${p.nome}</h2>
+        ${p.cap?`<span class="cap">${p.cap}</span>`:""}${acoes}</div></section>`;
+});
+const mosaico = (rot, titulo, itens) => `<section class="slide galeria"><div class="inner">
+  <div class="eyebrow">${rot}</div><h2>${titulo}</h2>
+  <div class="mos">${itens.slice(0,6).map(g=>`<figure><img src="${mini(g[0])}" alt="${g[1]}" loading="lazy"><figcaption>${g[1]}</figcaption></figure>`).join("")}</div>
+</div></section>`;
+h += mosaico("Portfólio","Plantas entregues",GALERIA.obras);
+h += mosaico("Jaú · SP","Nossa fábrica",GALERIA.fabrica);
+h += `<section class="slide pecas"><div class="inner">
+  <div class="eyebrow">Pós-venda</div><h2>Peças de reposição</h2><p>${PECAS.desc}</p>
+  <div class="fotos">${PECAS.fotos.map(f=>`<img src="${f[0]}" alt="${f[1]}" loading="lazy">`).join("")}</div>
+  <ul>${PECAS.maquinas.map(m=>`<li>${m[0]}<span>${m[1]}</span></li>`).join("")}</ul>
+  <button class="btn-orc" data-orc="pecas"><span class="lbl">+ Orçamento</span></button>
+</div></section>`;
+h += `<section class="slide contato"><div class="inner">
+  <h2>Vamos montar a sua planta?</h2>
+  <a class="wa" id="waC" target="_blank" rel="noopener">${WA_ICON}Falar no WhatsApp</a>
+  <dl><dt>Telefone</dt><dd><a href="${EMPRESA.telLink}">${EMPRESA.tel}</a></dd>
+  ${EMPRESA.emails.map(e=>`<dt>${e[0]}</dt><dd><a href="mailto:${e[1]}">${e[1]}</a></dd>`).join("")}
+  <dt>Endereço</dt><dd><a href="${EMPRESA.mapa}" target="_blank" rel="noopener">${EMPRESA.endereco}</a></dd></dl>
+  <img class="logo" src="${LOGO}" alt="SL Óleos">
+</div></section>`;
+feed.innerHTML = h;
+document.getElementById("waC").href = waLink("Olá! Vi o catálogo da SL Óleos e gostaria de falar com a equipe comercial.");
+
+const slides = [...feed.querySelectorAll(".slide")];
+const prog = document.getElementById("prog"), cont = document.getElementById("contador");
+prog.innerHTML = slides.map(() => "<i></i>").join("");
+const segs = [...prog.children];
+let atual = 0;
+function marcar(i){ atual = i; segs.forEach((s,k) => s.className = k < i ? "feito" : k === i ? "atual" : ""); cont.textContent = `${i+1}/${slides.length}`; }
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) marcar(slides.indexOf(e.target)); }), {root:feed, threshold:.6});
+slides.forEach(s => io.observe(s)); marcar(0);
+const ir = i => slides[Math.max(0,Math.min(slides.length-1,i))].scrollIntoView({behavior:"smooth"});
+document.getElementById("up").onclick = () => ir(atual-1);
+document.getElementById("down").onclick = () => ir(atual+1);
+addEventListener("keydown", e => { if (e.key==="ArrowDown"||e.key==="PageDown") {e.preventDefault();ir(atual+1);} if (e.key==="ArrowUp"||e.key==="PageUp") {e.preventDefault();ir(atual-1);} if (e.key==="Escape") fechar(); });
+
+const wrap = document.getElementById("sheetWrap");
+function abrir(id){
+  const p = PRODUTOS.find(x => x.id === id);
+  document.getElementById("sh-m").textContent = p.m;
+  document.getElementById("sh-t").textContent = p.nome;
+  document.getElementById("sh-d").textContent = p.desc;
+  document.getElementById("sh-f").innerHTML = p.ficha.map(f=>`<tr><th>${f[0]}</th><td>${f[1]}</td></tr>`).join("");
+  document.getElementById("sh-o").dataset.orc = p.id;
+  wrap.classList.add("aberto"); syncOrc();
+}
+function fechar(){ wrap.classList.remove("aberto"); }
+feed.addEventListener("click", e => { const b = e.target.closest("[data-ficha]"); if (b) abrir(b.dataset.ficha); });
+document.getElementById("sheetBg").onclick = fechar;
+let y0 = null; const sh = document.querySelector(".sheet");
+sh.addEventListener("touchstart", e => { y0 = sh.scrollTop <= 0 ? e.touches[0].clientY : null; }, {passive:true});
+sh.addEventListener("touchend", e => { if (y0 !== null && e.changedTouches[0].clientY - y0 > 70) fechar(); y0 = null; });
+montarBarraOrcamento();
+</script>
+</body>
+</html>

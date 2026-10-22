@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Catálogo SL Óleos · Linha de processo</title>
+<meta name="theme-color" content="#212020">
+<link rel="icon" href="img/logo-v.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap">
+<link rel="stylesheet" href="lib/base.css">
+<style>
+/* Layout: fluxograma vertical da planta; a tubulação em amarelo e verde (cores da gota) liga as etapas */
+body{background:linear-gradient(180deg,#fbfbfa 0%,var(--steel) 40%)}
+h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1.02;text-wrap:balance}
+.wrap{max-width:760px;margin:0 auto;padding-left:max(16px,var(--sa-l));padding-right:max(16px,var(--sa-r))}
+
+.topo{background:var(--grafite);color:#fff;position:relative;overflow:hidden}
+.topo .foto{position:absolute;inset:0;background:url("img/a/obra-vista-externa.jpg") center/cover;opacity:.45}
+.topo .foto::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(33,32,32,.2),rgba(33,32,32,.92) 80%)}
+.topo .wrap{position:relative;padding-block:calc(64px + var(--sa-t)) 30px}
+.topo img.logo{width:170px;margin-bottom:26px}
+.topo h1{font-size:clamp(36px,11vw,64px);font-weight:800;text-transform:uppercase;color:var(--amarelo)}
+.topo p{font-size:16px;font-weight:600;margin:12px 0 18px;max-width:38ch}
+.topo .grafismo{height:26px;width:60%}
+
+.fluxo{position:relative;padding-block:30px 10px}
+.tubo{position:absolute;left:calc(max(16px,var(--sa-l)) + 23px);top:58px;bottom:60px;width:6px;border-radius:3px;background:#d4d4d1;overflow:hidden}
+.tubo::after{content:"";position:absolute;left:0;right:0;height:38%;background:linear-gradient(180deg,transparent,var(--verde-claro) 40%,var(--amarelo));animation:escoa 3.2s linear infinite}
+@keyframes escoa{from{top:-40%}to{top:100%}}
+.etapa{position:relative;display:grid;grid-template-columns:52px 1fr;gap:14px;margin-bottom:18px}
+.etapa > *{min-width:0}
+.no{width:52px;height:52px;border-radius:50%;background:var(--grafite);color:var(--amarelo);display:flex;align-items:center;justify-content:center;font:800 17px/1 var(--f-body);position:relative;z-index:1;box-shadow:0 0 0 5px var(--steel)}
+.no.ponta{background:var(--amarelo);color:var(--grafite)}
+.no.verde{background:var(--verde);color:#fff}
+.no svg{width:24px;height:24px}
+.card{background:var(--plate);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.card > button.cab{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:12px;width:100%;padding:16px}
+.card > button.cab:focus-visible{outline:3px solid var(--amarelo);outline-offset:-3px}
+.cab .tt{flex:1;min-width:0}
+.cab .rot{font:700 10.5px/1 var(--f-body);letter-spacing:.16em;text-transform:uppercase;color:var(--verde)}
+.cab h2{font-size:23px;font-weight:800;margin-top:6px}
+.cab .qtd{font:600 12px/1.3 var(--f-body);color:var(--ink-soft);margin-top:6px}
+.cab .seta{width:34px;height:34px;border-radius:50%;background:var(--steel);display:flex;align-items:center;justify-content:center;transition:transform .25s;flex:none;font-weight:700}
+.card.aberta .seta{transform:rotate(180deg);background:var(--amarelo)}
+.corpo{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+.card.aberta .corpo{grid-template-rows:1fr}
+.corpo > div{overflow:hidden}
+.txt,.info{margin:0;padding:0 16px 12px;color:var(--ink-soft);font-size:14.5px}
+.info{padding-top:0}
+.info b{color:var(--ink)}
+.esteira{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 16px 18px;scrollbar-width:thin}
+.maq{flex:0 0 72%;max-width:250px;scroll-snap-align:start;background:var(--steel);border:1px solid var(--line);border-radius:12px;overflow:hidden;cursor:pointer;text-align:left;padding:0;display:flex;flex-direction:column}
+.maq .ph{aspect-ratio:4/3;background:#fff;display:flex;align-items:center;justify-content:center;max-width:100%;position:relative}
+.maq .ph img{width:100%;height:100%;object-fit:contain;padding:8px}
+.maq .ph.cena img{object-fit:cover;padding:0}
+.maq .ph.cena::after{content:"";position:absolute;inset:7px;border:2px solid var(--amarelo);border-radius:7px}
+.maq .ph .novo{position:absolute;right:10px;top:10px;z-index:1;font:800 9.5px/1 var(--f-body);letter-spacing:.12em;background:var(--amarelo);color:var(--grafite);padding:6px 8px;border-radius:99px}
+.maq .b{padding:10px 12px 12px;display:flex;flex-direction:column;gap:7px;flex:1}
+.maq .plaqueta{align-self:flex-start;font-size:10px;padding:5px 8px}
+.maq h3{font-size:16.5px;font-weight:800}
+.maq .cap{font:700 12px/1 var(--f-body);color:var(--verde)}
+.maq .btn-orc{margin-top:auto;font-size:11px;padding:8px 12px;color:var(--grafite);align-self:flex-start}
+.sementes{display:flex;flex-wrap:wrap;gap:8px;padding:0 16px 16px}
+.sem{display:inline-flex;align-items:center;gap:8px;font:700 12.5px/1 var(--f-body);background:var(--steel);border:1px solid var(--line);padding:4px 12px 4px 4px;border-radius:99px}
+.sem img,.sem i{width:30px;height:30px;border-radius:50%;object-fit:cover;display:block;background:radial-gradient(circle at 35% 35%,var(--verde-claro),var(--verde))}
+.obras{padding-top:8px}
+.obras figure{flex:0 0 70%;max-width:260px;margin:0;scroll-snap-align:start;position:relative;border-radius:12px;overflow:hidden;aspect-ratio:4/3}
+.obras img{width:100%;height:100%;object-fit:cover}
+.obras figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 10px 8px;font:700 11px/1.2 var(--f-body);background:linear-gradient(transparent,rgba(0,0,0,.78))}
+.chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 16px}
+.chips span{font:600 12.5px/1 var(--f-body);background:var(--steel);border:1px solid var(--line);padding:8px 11px;border-radius:99px}
+.lista{list-style:none;margin:0;padding:0 16px 12px}
+.lista li{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-weight:700;font-size:14px}
+.lista li span{font-weight:600;color:var(--verde)}
+.pecas-acao{padding:0 16px 18px}
+
+.completa{background:var(--grafite);color:#fff;border-radius:16px;padding:22px 18px 6px;margin:8px 0 26px;position:relative;overflow:hidden}
+.completa .rot{font:700 10.5px/1 var(--f-body);letter-spacing:.16em;text-transform:uppercase;color:var(--verde-claro)}
+.completa h2{font-size:clamp(26px,7.6vw,36px);font-weight:800;text-transform:uppercase;color:var(--amarelo);margin:8px 0 10px}
+.completa p{color:#d2d2d0;margin:0 0 14px;font-size:14.5px}
+.completa .esteira{padding:4px 0 18px}
+.completa .maq{background:var(--grafite-2);border-color:#3d3c3b;color:#fff}
+.completa .maq .cap{color:var(--verde-claro)}
+.completa .maq .btn-orc{color:#fff}
+.completa .maq .btn-orc.on{color:var(--grafite)}
+
+.rodape{background:var(--grafite);color:#d2d2d0;padding-block:30px calc(100px + var(--sa-b))}
+.rodape img{width:160px;margin-bottom:18px}
+.rodape h2{color:var(--amarelo);font-size:24px;font-weight:800;text-transform:uppercase;margin-bottom:14px}
+.rodape dl{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;margin:0;font-size:14px;font-weight:600}
+.rodape dt{font:700 10.5px/1.8 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:#9c9b99}
+.rodape dd{margin:0;overflow-wrap:anywhere}
+.rodape a{color:#fff}
+
+.sheet-bg{position:fixed;inset:0;z-index:80;background:rgba(10,10,10,.6);opacity:0;pointer-events:none;transition:opacity .25s}
+.sheet{position:fixed;z-index:81;left:0;right:0;bottom:0;margin:0 auto;max-width:560px;background:var(--paper);border-radius:20px 20px 0 0;padding:10px max(20px,var(--sa-r)) calc(24px + var(--sa-b)) max(20px,var(--sa-l));transform:translateY(105%);transition:transform .32s cubic-bezier(.2,.8,.2,1);max-height:88%;overflow:auto}
+.aberto .sheet-bg{opacity:1;pointer-events:auto}
+.aberto .sheet{transform:none}
+.sheet .alca{width:44px;height:5px;border-radius:3px;background:#c9c9c6;margin:0 auto 12px}
+.sheet .ft{background:#fff;border-radius:12px;display:flex;justify-content:center;margin-bottom:14px;max-height:34vh;overflow:hidden}
+.sheet .ft img{max-height:34vh;object-fit:contain;padding:10px}
+.sheet .ft.cena img{width:100%;object-fit:cover;padding:0}
+.sheet h3{font-size:24px;font-weight:800;margin:12px 0 0}
+.sheet h3::after{content:"";display:block;width:70px;height:4px;background:var(--amarelo);margin:12px 0}
+.sheet p{color:var(--ink-soft);margin:0 0 12px}
+.sheet .btn-orc{margin-top:16px;color:var(--grafite);width:100%;padding:14px}
+#orc-bar{left:calc(14px + var(--sa-l));right:calc(14px + var(--sa-r));justify-content:center}
+</style>
+</head>
+<body>
+<a class="proto-back" href="./">← Formatos</a>
+<header class="topo"><div class="foto"></div><div class="wrap">
+  <img class="logo" id="logo" alt="SL Óleos">
+  <h1>Do grão ao óleo</h1>
+  <p>Toque em cada etapa da linha para ver os equipamentos que a SL Óleos fabrica para ela.</p>
+  <div id="graf"></div>
+</div></header>
+<main class="wrap fluxo" id="fluxo"><div class="tubo" aria-hidden="true"></div></main>
+<footer class="rodape"><div class="wrap">
+  <img id="logoR" alt="SL Óleos">
+  <h2>Fale com a engenharia</h2>
+  <dl id="contatos"></dl>
+</div></footer>
+<div id="sheetWrap">
+  <div class="sheet-bg" id="sheetBg"></div>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sh-t">
+    <div class="alca"></div>
+    <div class="ft" id="sh-ft"><img id="sh-i" alt=""></div>
+    <span class="plaqueta" id="sh-m"></span>
+    <h3 id="sh-t"></h3>
+    <p id="sh-d"></p>
+    <table class="ficha" id="sh-f"></table>
+    <button class="btn-orc" id="sh-o"><span class="lbl">+ Orçamento</span></button>
+  </div>
+</div>
+<div id="orc-bar"></div>
+
+<script src="lib/dados.js"></script>
+<script>
+document.getElementById("logo").src = LOGO_BRANCO;
+document.getElementById("logoR").src = LOGO_BRANCO;
+document.getElementById("graf").innerHTML = GRAFISMO;
+const fluxo = document.getElementById("fluxo");
+const ICON_GRAO = '<svg viewBox="0 0 24 24" fill="currentColor"><ellipse cx="12" cy="12" rx="6" ry="9" transform="rotate(30 12 12)"/></svg>';
+const ICON_GOTA = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2s7 8 7 13a7 7 0 0 1-14 0c0-5 7-13 7-13Z"/></svg>';
+const ICON_CHAVE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4 2.5-2.5Z"/></svg>';
+
+const cardMaq = p => `<button class="maq" data-ficha="${p.id}">
+  <div class="ph ${p.cena?"cena":""}">${p.novo?'<span class="novo">NOVO</span>':""}<img src="${p.img}" alt="${p.nome}" loading="lazy"></div>
+  <div class="b"><span class="plaqueta">${p.m}</span><h3>${p.nome}</h3>${p.cap?`<span class="cap">${p.cap}</span>`:""}
+  <span class="btn-orc" role="button" tabindex="0" data-orc="${p.id}"><span class="lbl">+ Orçamento</span></span></div></button>`;
+const de = e => PRODUTOS.filter(p => p.etapa === e);
+const etapa = (no, cls, rot, titulo, qtd, conteudo, aberta) => `<div class="etapa"><div class="no ${cls}">${no}</div>
+  <div class="card ${aberta?"aberta":""}"><button class="cab" aria-expanded="${!!aberta}"><div class="tt"><div class="rot">${rot}</div><h2>${titulo}</h2><div class="qtd">${qtd}</div></div><span class="seta">⌄</span></button>
+  <div class="corpo"><div>${conteudo}</div></div></div></div>`;
+
+let h = "";
+h += etapa(ICON_GRAO, "verde", "Entrada", "Semente", "matéria-prima",
+  `<p class="info">As linhas SL Óleos processam <b>sementes oleaginosas</b> de vários tipos. A configuração de cada máquina é definida pela engenharia conforme a semente.</p>
+   <div class="sementes">${SEMENTES.map(([n,img])=>`<span class="sem">${img?`<img src="${mini(img)}" alt="" loading="lazy">`:'<i></i>'}${n}</span>`).join("")}</div>`);
+h += etapa("01", "", "Etapa 01", "Preparo", `${de("preparo").length} equipamentos · até 500 ton/dia`,
+  `<p class="txt">Alimentação e laminação da semente para a prensagem render mais óleo.</p><div class="esteira">${de("preparo").map(cardMaq).join("")}</div>`, true);
+h += etapa("02", "", "Etapa 02", "Prensagem", `${de("prensagem").length} prensas · até 2.500 kg/h`,
+  `<p class="txt">O eixo com helicoides comprime a massa e o óleo escoa pelas barras de prensagem.</p><div class="esteira">${de("prensagem").map(cardMaq).join("")}</div>`, true);
+h += etapa("03", "", "Etapa 03", "Refino", `${de("refino").length} equipamento · alta pressão`,
+  `<p class="txt">O óleo é limpo e segue para a refinaria. A SL Óleos já entregou <b>1 planta de refino</b> e fabrica equipamentos para essa etapa.</p><div class="esteira">${de("refino").map(cardMaq).join("")}</div>`, true);
+h += etapa(ICON_GOTA, "ponta", "Saída", "Óleo vegetal", "bruto · filtrado · refinado",
+  `<p class="info">Até aqui, a SL Óleos já entregou <b>7 plantas de extração</b> no Brasil, Argentina, Honduras, Peru e Portugal.</p>`);
+h += `<section class="completa"><div class="rot">Ou tudo de uma vez</div><h2>Planta completa</h2>
+  <p>Projetamos, fabricamos e montamos a linha inteira, do preparo ao óleo, com montagem eletromecânica, estruturas e tanques.</p>
+  <div class="esteira">${de("planta").map(cardMaq).join("")}</div>
+  <div class="rot" style="margin-top:6px">Plantas entregues</div>
+  <div class="esteira obras">${GALERIA.obras.slice(0,10).map(g=>`<figure><img src="${mini(g[0])}" alt="${g[1]}" loading="lazy"><figcaption>${g[1]}</figcaption></figure>`).join("")}</div></section>`;
+h += etapa(ICON_CHAVE, "verde", "Pós-venda", "Peças e manutenção", "reposição · montagem · consultoria",
+  `<p class="txt">${PECAS.desc} Também fazemos montagem e manutenção de plantas de óleos e alimentos.</p>
+   <ul class="lista">${PECAS.maquinas.map(m=>`<li>${m[0]}<span>${m[1]}</span></li>`).join("")}</ul>
+   <div class="pecas-acao"><button class="btn-orc" data-orc="pecas"><span class="lbl">+ Orçamento</span></button></div>`);
+fluxo.insertAdjacentHTML("beforeend", h);
+
+fluxo.addEventListener("click", e => {
+  const c = e.target.closest("button.cab");
+  if (c) { const ab = c.parentElement.classList.toggle("aberta"); c.setAttribute("aria-expanded", ab); return; }
+  if (e.target.closest("[data-orc]")) return;
+  const m = e.target.closest("[data-ficha]"); if (m) abrir(m.dataset.ficha);
+});
+const wrap = document.getElementById("sheetWrap");
+function abrir(id){
+  const p = PRODUTOS.find(x => x.id === id);
+  document.getElementById("sh-ft").className = "ft" + (p.cena ? " cena" : "");
+  document.getElementById("sh-i").src = p.img; document.getElementById("sh-i").alt = p.nome;
+  document.getElementById("sh-m").textContent = p.m;
+  document.getElementById("sh-t").textContent = p.nome;
+  document.getElementById("sh-d").textContent = p.desc;
+  document.getElementById("sh-f").innerHTML = p.ficha.map(f=>`<tr><th>${f[0]}</th><td>${f[1]}</td></tr>`).join("");
+  document.getElementById("sh-o").dataset.orc = p.id;
+  wrap.classList.add("aberto"); syncOrc();
+}
+const fechar = () => wrap.classList.remove("aberto");
+document.getElementById("sheetBg").onclick = fechar;
+addEventListener("keydown", e => { if (e.key === "Escape") fechar(); });
+let y0 = null; const sh = document.querySelector(".sheet");
+sh.addEventListener("touchstart", e => { y0 = sh.scrollTop <= 0 ? e.touches[0].clientY : null; }, {passive:true});
+sh.addEventListener("touchend", e => { if (y0 !== null && e.changedTouches[0].clientY - y0 > 70) fechar(); y0 = null; });
+document.getElementById("contatos").innerHTML =
+  `<dt>Telefone</dt><dd><a href="${EMPRESA.telLink}">${EMPRESA.tel}</a></dd>` +
+  EMPRESA.emails.map(e=>`<dt>${e[0]}</dt><dd><a href="mailto:${e[1]}">${e[1]}</a></dd>`).join("") +
+  `<dt>Endereço</dt><dd><a href="${EMPRESA.mapa}" target="_blank" rel="noopener">${EMPRESA.endereco}</a></dd>`;
+montarBarraOrcamento();
+</script>
+</body>
+</html>
