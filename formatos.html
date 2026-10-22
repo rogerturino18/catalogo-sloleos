@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Catálogo SL Óleos · Formatos</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#212020">
+<link rel="icon" href="img/logo-v.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap">
+<link rel="stylesheet" href="lib/base.css">
+<style>
+body{background:var(--night);color:#fff;min-height:100vh}
+.wrap{max-width:900px;margin:0 auto;padding:calc(36px + var(--sa-t)) max(18px,var(--sa-r)) calc(40px + var(--sa-b)) max(18px,var(--sa-l))}
+img.logo{width:190px}
+.grafismo{width:220px;height:22px;margin-top:22px}
+h1{font:800 clamp(30px,8vw,48px)/1 var(--f-display);text-transform:uppercase;margin:18px 0 12px;color:var(--amarelo)}
+h1 span{color:#fff}
+.sub{color:#d2d2d0;margin:0 0 28px;max-width:52ch}
+.opcoes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.op{display:flex;flex-direction:column;background:var(--grafite-2);border:1px solid #3d3c3b;border-radius:16px;overflow:hidden;text-decoration:none;color:#fff;transition:transform .2s,border-color .2s}
+.op:hover{transform:translateY(-3px);border-color:var(--oil)}
+.mini{height:150px;display:flex;align-items:center;justify-content:center;background:#181717;position:relative;overflow:hidden}
+.b{padding:16px 16px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+.b .n{font:700 11px/1 var(--f-body);letter-spacing:.14em;color:var(--verde-claro)}
+.b h2{font:800 21px/1.1 var(--f-display);text-transform:uppercase;margin:0}
+.b p{margin:0;color:#cfcfcd;font-size:14px}
+.b .ir{margin-top:auto;padding-top:10px;font:700 12.5px/1 var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--amarelo)}
+/* miniaturas desenhadas */
+.livro{display:flex;perspective:500px}
+.livro i{width:56px;height:78px;background:var(--paper);border-radius:2px}
+.livro i:first-child{transform:rotateY(18deg);transform-origin:right;background:linear-gradient(90deg,#e7e3da,var(--paper))}
+.livro i:last-child{transform:rotateY(-18deg);transform-origin:left}
+.livro i::after{content:"";display:block;margin:10px 8px;height:30px;background:#cfd6dc;border-radius:2px}
+.cel{width:62px;height:112px;border:3px solid #4a4948;border-radius:12px;display:flex;flex-direction:column;padding:6px 5px;gap:4px;background:var(--night-2)}
+.cel .bar{display:flex;gap:2px}.cel .bar span{flex:1;height:2px;background:#5a5958;border-radius:1px}.cel .bar span:first-child{background:#fff}
+.cel .img{flex:1;background:#1f6fd6;border-radius:5px;outline:1.5px solid var(--amarelo);outline-offset:-4px}
+.cel .t{height:6px;width:70%;background:var(--oil);border-radius:2px}
+.fl{display:flex;flex-direction:column;align-items:flex-start;gap:8px;position:relative;padding-left:4px}
+.fl::before{content:"";position:absolute;left:13px;top:10px;bottom:10px;width:3px;background:var(--oil)}
+.fl div{display:flex;align-items:center;gap:8px}
+.fl b{width:22px;height:22px;border-radius:50%;background:var(--verde);position:relative}
+.fl span{height:16px;width:90px;background:#3d3c3b;border-radius:4px}
+.fl div:nth-child(2) span{width:120px}
+.v1{display:inline-block;margin-top:26px;color:#9c9b99;font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <img class="logo" src="img/logo-h-branco.png" alt="SL Óleos">
+  <svg class="grafismo" viewBox="0 0 600 70" preserveAspectRatio="none" aria-hidden="true"><path d="M0 30 C120 0 230 8 330 30 S520 52 600 0 C540 40 450 56 330 40 S110 22 0 30Z" fill="#dad106"/><path d="M0 50 C120 26 230 36 330 54 S520 72 600 28 C540 64 450 76 330 62 S110 44 0 50Z" fill="#018837"/></svg>
+  <h1>Escolha o <span>formato</span></h1>
+  <p class="sub">O formato Stories é o catálogo oficial (é o que abre pelo QR Code). Os outros ficam guardados aqui para consulta ou troca futura.</p>
+  <div class="opcoes">
+    <a class="op" href="folheavel.html"><div class="mini"><div class="livro"><i></i><i></i></div></div>
+      <div class="b"><span class="n">FORMATO 1</span><h2>Folheável</h2><p>Capa, índice e uma página por máquina. Vira como um catálogo impresso.</p><span class="ir">Abrir →</span></div></a>
+    <a class="op" href="./"><div class="mini"><div class="cel"><div class="bar"><span></span><span></span><span></span><span></span></div><div class="img"></div><div class="t"></div></div></div>
+      <div class="b"><span class="n">FORMATO 2</span><h2>Stories <span style="font-size:11px;vertical-align:middle;background:var(--amarelo);color:var(--grafite);padding:4px 8px;border-radius:99px;letter-spacing:.08em">ATUAL</span></h2><p>Uma máquina por tela. Desliza para cima como no Instagram, com ficha técnica que sobe.</p><span class="ir">Abrir →</span></div></a>
+    <a class="op" href="processo.html"><div class="mini"><div class="fl"><div><b></b><span></span></div><div><b></b><span></span></div><div><b></b><span></span></div></div></div>
+      <div class="b"><span class="n">FORMATO 3</span><h2>Linha de processo</h2><p>Do grão ao óleo: toque em cada etapa da planta para ver as máquinas dela.</p><span class="ir">Abrir →</span></div></a>
+  </div>
+  <a class="v1" href="v1.html">Ver a primeira versão (site)</a>
+</div>
+</body>
+</html>
