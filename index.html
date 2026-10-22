@@ -133,7 +133,7 @@ h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1;text-wrap:balance}
 .dica-zoom{font-size:13px;color:#bdbcba;margin:-6px 0 14px}
 .pecas .col-b{display:flex;flex-direction:column;flex:1}
 /* ===== Computador (e-mail, link aberto no PC): cada tela em duas colunas ===== */
-@media (min-width:900px){
+@media (min-width:820px) and (min-aspect-ratio:1/1){
   .inner{max-width:1200px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);grid-template-rows:auto;column-gap:56px;align-items:center;align-content:center;
     padding:calc(70px + var(--sa-t)) 110px 90px 60px}
   .col{display:flex;flex-direction:column;justify-content:center;grid-column:2;grid-row:1 / span 2;align-self:center;min-width:0}
@@ -173,9 +173,9 @@ h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1;text-wrap:balance}
   .aberto .sheet{transform:translate(-50%,-50%);opacity:1;pointer-events:auto}
   .sheet .alca{display:none}
 }
-@media (min-width:900px){.navs{position:fixed;z-index:40;right:28px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px}
+@media (min-width:820px) and (min-aspect-ratio:1/1){.navs{position:fixed;z-index:40;right:28px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px}
   .navs button{width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);color:#fff;font-size:20px;cursor:pointer}}
-@media (max-width:899px){.navs{display:none}}
+@media not all and (min-width:820px) and (min-aspect-ratio:1/1){.navs{display:none}}
 </style>
 </head>
 <body>
