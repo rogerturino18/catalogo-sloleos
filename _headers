@@ -1,0 +1,6 @@
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+/lib/*
+  Cache-Control: public, max-age=0, must-revalidate
+/img/*
+  Cache-Control: public, max-age=86400

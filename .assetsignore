@@ -1,0 +1,9 @@
+.git
+.gitignore
+.assetsignore
+wrangler.jsonc
+vercel.json
+README.md
+node_modules
+img/src
+img/album
