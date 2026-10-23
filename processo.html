@@ -163,8 +163,8 @@ let h = "";
 h += etapa(ICON_GRAO, "verde", "Entrada", "Semente", "matéria-prima",
   `<p class="info">As linhas SL Óleos processam <b>sementes oleaginosas</b> de vários tipos. A configuração de cada máquina é definida pela engenharia conforme a semente.</p>
    <div class="sementes">${SEMENTES.map(([n,img])=>`<span class="sem">${img?`<img src="${mini(img)}" alt="" loading="lazy">`:'<i></i>'}${n}</span>`).join("")}</div>`);
-h += etapa("01", "", "Etapa 01", "Preparo", `${de("preparo").length} equipamentos · até 500 ton/dia`,
-  `<p class="txt">Alimentação e laminação da semente para a prensagem render mais óleo.</p><div class="esteira">${de("preparo").map(cardMaq).join("")}</div>`, true);
+h += etapa("01", "", "Etapa 01", "Preparo", `${de("preparo").length} equipamentos · até 1.100 ton/dia`,
+  `<p class="txt">Alimentação, laminação e cozimento da semente para a prensagem e a extração renderem mais óleo.</p><div class="esteira">${de("preparo").map(cardMaq).join("")}</div>`, true);
 h += etapa("02", "", "Etapa 02", "Prensagem", `${de("prensagem").length} prensas · até 2.500 kg/h`,
   `<p class="txt">O eixo com helicoides comprime a massa e o óleo escoa pelas barras de prensagem.</p><div class="esteira">${de("prensagem").map(cardMaq).join("")}</div>`, true);
 h += etapa("03", "", "Etapa 03", "Refino", `${de("refino").length} equipamento · alta pressão`,
