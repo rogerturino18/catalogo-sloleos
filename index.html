@@ -85,7 +85,7 @@ h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1;text-wrap:balance}
 .maq .btn-orc{color:#fff;padding:12px 14px}
 
 /* equipe e galerias */
-.empresa .equipe{height:26%;min-height:120px;border-radius:14px;background-size:cover;background-position:center 30%;outline:2px solid var(--amarelo);outline-offset:-8px}
+.empresa .equipe{flex:1;min-height:160px;height:auto;border-radius:14px;background-size:cover;background-position:center 30%;outline:2px solid var(--amarelo);outline-offset:-8px}
 .empresa .eyebrow{margin-top:18px}
 .galeria{background:var(--grafite)}
 .galeria h2{font-size:clamp(26px,8vw,38px);font-weight:800;text-transform:uppercase;color:var(--amarelo);margin-bottom:16px}
@@ -231,7 +231,6 @@ h += `<section class="slide empresa"><div class="inner">
   <h2>Performance industrial para o setor vegetal</h2>
   <p>Mais de 30 anos de experiência metalúrgica e 10 anos de soluções para extração de óleos vegetais: equipamentos, plantas completas e engenharia, em ${EMPRESA.paises.join(", ")}.</p>
   <p class="frase">${EMPRESA.frase}</p>
-  <div class="nums">${EMPRESA.numeros.map(n=>`<div><b>${n[0]}</b><span>${n[1]}</span></div>`).join("")}</div>
   </div>
 </div></section>`;
 PRODUTOS.forEach(p => {
