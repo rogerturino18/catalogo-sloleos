@@ -2,6 +2,8 @@
   // Catálogo SL Óleos — site estático publicado pelo Cloudflare Workers (assets)
   "name": "catalogo-sloleos",
   "compatibility_date": "2025-09-01",
+  "workers_dev": true,
+  "preview_urls": true,
   "assets": {
     "directory": "./",
     "html_handling": "auto-trailing-slash",
