@@ -192,6 +192,20 @@ h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1;text-wrap:balance}
 @media (min-width:820px) and (min-aspect-ratio:1/1){.navs{position:fixed;z-index:40;right:28px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px}
   .navs button{width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);color:#fff;font-size:20px;cursor:pointer}}
 @media not all and (min-width:820px) and (min-aspect-ratio:1/1){.navs{display:none}}
+
+/* Peças: faixa de fotos que arrasta para o lado (celular) / grade 3×3 (computador) */
+.pecas .fotos{display:flex!important;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -22px 6px;padding:0 22px;scrollbar-width:none;height:auto!important}
+.pecas .fotos::-webkit-scrollbar{display:none}
+.pecas .fotos figure{flex:0 0 74%;margin:0;scroll-snap-align:start;position:relative;border-radius:10px;overflow:hidden;background:#ececeb;aspect-ratio:1/1}
+.pecas .fotos img{width:100%!important;height:100%!important;object-fit:cover;aspect-ratio:auto!important;grid-column:auto!important;background:none!important}
+.pecas .fotos figure:first-child img,.pecas .fotos figure:nth-child(2) img{object-fit:contain}
+.pecas .fotos figcaption{position:absolute;left:0;right:0;bottom:0;padding:16px 8px 6px;font:700 10.5px/1.2 var(--f-body);color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.72))}
+.pecas .arraste{font-size:11.5px!important;color:#a9a8a6!important;margin:0 0 10px!important}
+@media (min-width:820px) and (min-aspect-ratio:1/1){
+  .pecas .fotos{display:grid!important;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,minmax(0,1fr));overflow:visible;margin:0!important;padding:0;height:calc(100vh - 190px)!important}
+  .pecas .fotos figure,.pecas .fotos figure:first-child{aspect-ratio:auto;min-height:0}
+  .pecas .arraste{display:none}
+}
 </style>
 </head>
 <body>
@@ -256,7 +270,8 @@ h += mosaico("Portfólio","Plantas entregues",GALERIA.obras);
 h += mosaico("Jaú · SP","Nossa fábrica",GALERIA.fabrica);
 h += `<section class="slide pecas"><div class="inner">
   <div class="col"><div class="eyebrow">Pós-venda</div><h2>Peças de reposição</h2><p>${PECAS.desc}</p></div>
-  <div class="fotos">${PECAS.fotos.map(f=>`<img src="${f[0]}" alt="${f[1]}" data-zoom="${f[0]}" loading="lazy">`).join("")}</div>
+  <div class="fotos">${PECAS.fotos.map(f=>`<figure><img src="${f[0]}" alt="${f[1]}" data-zoom="${f[0]}" data-leg="${f[1]}" loading="lazy"><figcaption>${f[1]}</figcaption></figure>`).join("")}</div>
+  <p class="arraste">← Arraste para ver as ${PECAS.fotos.length} peças · toque para ampliar</p>
   <div class="col col-b"><ul>${PECAS.maquinas.map(m=>`<li>${m[0]}<span>${m[1]}</span></li>`).join("")}</ul>
   <button class="btn-orc" data-orc="pecas"><span class="lbl">+ Orçamento</span></button></div>
 </div></section>`;
