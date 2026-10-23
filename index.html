@@ -133,6 +133,19 @@ h1,h2,h3{font-family:var(--f-display);margin:0;line-height:1;text-wrap:balance}
 .dica-zoom{font-size:13px;color:#bdbcba;margin:-6px 0 14px}
 .pecas .col-b{display:flex;flex-direction:column;flex:1}
 
+.empresa .p2{display:block}
+@media (min-width:820px) and (min-aspect-ratio:1/1){.empresa .p2{display:block}}
+@media not all and (min-width:820px) and (min-aspect-ratio:1/1){
+  .empresa .equipe{height:18%;min-height:96px}
+  .empresa .eyebrow{margin:14px 0 8px}
+  .empresa h2{font-size:clamp(21px,6vw,28px)}
+  .empresa h2::after{margin-top:10px}
+  .empresa p{font-size:13.5px;line-height:1.5;margin-top:10px}
+  .empresa .nums{grid-template-columns:repeat(4,1fr);gap:6px;margin-top:auto;padding-top:12px}
+  .empresa .nums div{padding:9px 7px;border-radius:10px}
+  .empresa .nums b{font-size:22px}
+  .empresa .nums span{font-size:10px;line-height:1.25;display:block}
+}
 /* ===== Celular: foto e texto centralizados juntos, foto na largura toda ===== */
 @media not all and (min-width:820px) and (min-aspect-ratio:1/1){
   .maq.cena .inner{justify-content:center;padding-top:calc(104px + var(--sa-t))}
@@ -228,9 +241,9 @@ h += `<section class="slide empresa"><div class="inner">
   <div class="equipe" style="background-image:url('${foto("obra-equipe")}')"></div>
   <div class="col">
   <div class="eyebrow">Quem somos</div>
-  <h2>Performance industrial para o setor vegetal</h2>
-  <p>Mais de 30 anos de experiência metalúrgica e 10 anos de soluções para extração de óleos vegetais: equipamentos, plantas completas e engenharia, em ${EMPRESA.paises.join(", ")}.</p>
-  <p class="frase">${EMPRESA.frase}</p>
+  <h2>Equipamentos sob medida para a indústria de óleos vegetais</h2>
+  <p>A SL Óleos nasceu da longa experiência de seus sócios no processamento de óleos vegetais. Projetamos e fabricamos cada equipamento conforme a demanda do cliente, com engenharia própria do projeto à montagem.</p>
+  <p class="p2">Aliamos fabricação própria a parcerias estratégicas para grandes volumes, com plantas e equipamentos entregues no Brasil, na Argentina, em Honduras, no Peru e em Portugal.</p>
   <div class="nums">${EMPRESA.numeros.map(n=>`<div><b>${n[0]}</b><span>${n[1]}</span></div>`).join("")}</div>
   </div>
 </div></section>`;
